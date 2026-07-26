@@ -1,0 +1,6 @@
+{
+  "name": "TANDEM FOOT CLUB",
+  "description": "Where your stadium dreams come to life - Official website for TANDEM FOOT CLUB Elite Football Academy in Bamako, Mali.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
