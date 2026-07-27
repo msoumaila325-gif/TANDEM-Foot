@@ -45,7 +45,7 @@ export const Hero: React.FC<HeroProps> = ({
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-36 lg:pt-44 pb-20 overflow-hidden bg-[#0A1A33] text-white selection:bg-[#2563EB] selection:text-white">
+    <section className="relative min-h-screen flex items-center justify-center pt-28 sm:pt-36 lg:pt-44 pb-16 sm:pb-20 overflow-hidden bg-[#0A1A33] text-white selection:bg-[#2563EB] selection:text-white">
       {/* Background Cinematic Video Layer */}
       <div className="absolute inset-0 z-0">
         <video
@@ -89,7 +89,7 @@ export const Hero: React.FC<HeroProps> = ({
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] font-heading"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.12] sm:leading-[1.08] font-heading"
             >
               {lang === 'en' ? (
                 <>
@@ -107,7 +107,7 @@ export const Hero: React.FC<HeroProps> = ({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-base sm:text-xl text-[#DCEBFF]/85 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+              className="text-sm sm:text-lg md:text-xl text-[#DCEBFF]/85 leading-relaxed max-w-2xl mx-auto lg:mx-0"
             >
               {lang === 'en'
                 ? 'Developing technical excellence, tactical intelligence, and professional discipline for young athletes in Bamako.'
@@ -119,13 +119,13 @@ export const Hero: React.FC<HeroProps> = ({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 space-y-3"
+              className="p-3.5 sm:p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 space-y-3"
             >
-              <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#60A5FA]">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-xs font-bold uppercase tracking-wider text-[#60A5FA]">
                 <span>{lang === 'en' ? 'Select Squad Category:' : 'Catégories D\'Âge Requis:'}</span>
-                <span className="text-emerald-400 flex items-center gap-1">
-                  <Activity className="w-3.5 h-3.5" />
-                  {categories.find(c => c.id === selectedCategory)?.focus}
+                <span className="text-emerald-400 flex items-center gap-1 text-[11px] sm:text-xs">
+                  <Activity className="w-3.5 h-3.5 flex-shrink-0" />
+                  <span className="truncate">{categories.find(c => c.id === selectedCategory)?.focus}</span>
                 </span>
               </div>
 
@@ -134,7 +134,7 @@ export const Hero: React.FC<HeroProps> = ({
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+                    className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
                       selectedCategory === cat.id
                         ? 'bg-gradient-to-r from-[#1E4E92] to-[#2563EB] text-white shadow-blue-glow scale-105 border border-white/30'
                         : 'bg-white/10 hover:bg-white/20 text-[#DCEBFF] border border-white/10'

@@ -93,12 +93,12 @@ export const CoachingStaff: React.FC<CoachingStaffProps> = ({ lang }) => {
       {/* Coach Detail Modal */}
       <AnimatePresence>
         {selectedCoach && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md overflow-y-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-gray-200"
+              className="bg-white rounded-3xl max-w-xl w-full p-5 sm:p-8 shadow-2xl relative border border-gray-200 my-auto max-h-[90vh] overflow-y-auto"
             >
               <button
                 onClick={() => setSelectedCoach(null)}

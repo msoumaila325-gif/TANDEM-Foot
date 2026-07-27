@@ -28,6 +28,18 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
     { id: 'about', label: lang === 'en' ? 'About Us' : 'À Propos' },
     { id: 'why-us', label: lang === 'en' ? 'Why TFC' : 'Pourquoi TFC' },
@@ -178,13 +190,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-[60px] bg-[#153E75]/95 backdrop-blur-xl z-40 flex flex-col p-6 animate-in slide-in-from-top-4 duration-300 border-t border-white/10 overflow-y-auto">
-          <div className="flex flex-col gap-2 my-auto">
+        <div className="lg:hidden fixed inset-x-0 top-[64px] sm:top-[68px] bottom-0 bg-[#153E75]/98 backdrop-blur-2xl z-40 flex flex-col p-6 animate-in slide-in-from-top-4 duration-300 border-t border-white/10 overflow-y-auto">
+          <div className="flex flex-col gap-2 my-auto py-4">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollTo(link.id)}
-                className="flex items-center justify-between px-4 py-3 rounded-xl text-left text-lg font-bold text-white hover:bg-[#1E4E92] transition-colors"
+                className="flex items-center justify-between px-4 py-3.5 rounded-xl text-left text-base sm:text-lg font-bold text-white hover:bg-[#1E4E92] active:bg-[#1E4E92] transition-colors cursor-pointer"
               >
                 <span>{link.label}</span>
                 <ChevronRight className="w-5 h-5 text-[#3B82F6]" />
@@ -192,7 +204,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             ))}
           </div>
 
-          <div className="pt-6 border-t border-white/15 mt-auto flex flex-col gap-3">
+          <div className="pt-6 border-t border-white/15 mt-auto flex flex-col gap-4">
             <div className="text-xs text-[#DCEBFF]/80 flex flex-col gap-1">
               <span className="font-bold text-white">{ACADEMY_INFO.name}</span>
               <span>{ACADEMY_INFO.headquarters.fullAddress}</span>
@@ -203,7 +215,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setMobileMenuOpen(false);
                 onOpenEnrollment();
               }}
-              className="w-full py-3.5 rounded-xl font-bold text-center text-white bg-gradient-to-r from-[#1E4E92] to-[#2563EB] shadow-lg"
+              className="w-full py-4 rounded-2xl font-extrabold text-center text-white bg-gradient-to-r from-[#1E4E92] to-[#2563EB] shadow-lg text-sm sm:text-base cursor-pointer hover:opacity-95 active:scale-98 transition-all"
             >
               {lang === 'en' ? 'Book Trial Session' : 'Réserver une Détection'}
             </button>
