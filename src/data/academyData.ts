@@ -396,7 +396,7 @@ export const COACHES_DATA: Coach[] = [
 export const FACILITIES_DATA: Facility[] = [
   {
     id: "fac-1",
-    name: { en: "FIFA Standard Synthetic Pitch", fr: "Terrain Synthétique Norme FIFA" },
+    name: { en: "Terrain officiel de club", fr: "Terrain officiel de club" },
     description: {
       en: "State-of-the-art synthetic field with professional LED floodlights, shock pad underlay, and professional match dimensions.",
       fr: "Terrain synthétique de dernière génération avec éclairage LED professionnel, sous-couche d'amortissement et dimensions réglementaires."

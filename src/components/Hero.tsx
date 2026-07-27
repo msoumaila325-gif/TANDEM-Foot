@@ -93,11 +93,11 @@ export const Hero: React.FC<HeroProps> = ({
             >
               {lang === 'en' ? (
                 <>
-                  Forge Your Legacy At <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] via-white to-[#3B82F6] font-extrabold">TANDEM FOOTBALL CLUB</span>.
+                  Forge Your Legacy At <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] via-white to-[#3B82F6] font-black">TANDEM FOOTBALL CLUB</span>
                 </>
               ) : (
                 <>
-                  Forger L'Avenir Du <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] via-white to-[#3B82F6] font-extrabold">Football Malien</span> Avec Élégance.
+                  Forger L'Avenir Du <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] via-white to-[#3B82F6] font-black">Football Malien</span> Avec Élégance
                 </>
               )}
             </motion.h1>
@@ -220,7 +220,7 @@ export const Hero: React.FC<HeroProps> = ({
 
                 <div className="flex items-center justify-between pt-1">
                   <div>
-                    <div className="text-sm font-bold text-white font-heading">Stade Municipal N'Tabacoro</div>
+                    <div className="text-sm font-bold text-white font-heading">Terrain de N'Tabacoro</div>
                     <div className="text-xs text-gray-400">Samedi Prochain • 08h00 - 11h30</div>
                   </div>
                   <button
