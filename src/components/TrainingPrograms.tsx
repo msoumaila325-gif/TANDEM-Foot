@@ -45,7 +45,7 @@ export const TrainingPrograms: React.FC<TrainingProgramsProps> = ({
           <p className="mt-4 text-base sm:text-lg text-gray-600">
             {lang === 'en'
               ? 'Our UEFA-aligned training framework combines technical perfection, tactical IQ, physical power, and mental resilience.'
-              : 'Notre programme aligné sur l’UEFA associe perfection technique, QI tactique, puissance physique et mental d’acier.'}
+              : 'Notre programme delite associe perfection technique, QI tactique, puissance physique et mental d’acier.'}
           </p>
         </div>
 

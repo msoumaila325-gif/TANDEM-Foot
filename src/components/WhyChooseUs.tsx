@@ -10,7 +10,7 @@ interface WhyChooseUsProps {
 export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ lang }) => {
   const features = [
     {
-      title: { en: "CAF & UEFA Certified Coaches", fr: "Entraîneurs Certifiés CAF & UEFA" },
+      title: { en: "CAF Certified Coaches", fr: "Entraîneurs Certifiés CAF " },
       desc: {
         en: "Our technical staff holds top international coaching licenses with decades of professional youth experience.",
         fr: "Notre staff technique possède des licences internationales et des dizaines d'années d'expérience."

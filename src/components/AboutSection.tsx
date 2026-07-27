@@ -255,7 +255,7 @@ export const AboutSection: React.FC<AboutProps> = ({ lang }) => {
                     {lang === 'en' ? 'Quality Commitment' : 'Engagement Qualité'}
                   </div>
                   <div className="text-sm font-bold">
-                    {lang === 'en' ? 'FIFA & CAF Certified Standards' : 'Normes Certifiées FIFA & CAF'}
+                    {lang === 'en' ? 'CAF Certified Standards' : 'Normes Certifiées CAF'}
                   </div>
                 </div>
               </div>
