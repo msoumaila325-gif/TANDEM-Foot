@@ -40,20 +40,26 @@ export const AboutSection: React.FC<AboutProps> = ({ lang }) => {
       <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#153E75] via-[#1E4E92] to-[#3B82F6]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCEBFF] text-[#1E4E92] text-xs font-bold uppercase tracking-widest mb-4">
-            <Target className="w-4 h-4 text-[#1E4E92]" />
-            <span>{lang === 'en' ? 'Our Foundation' : 'Notre Fondation'}</span>
+        {/* Top Eyebrow Badge (Green Dot Style) */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F8FAFC] border border-slate-200 text-slate-800 text-xs font-bold shadow-xs mb-6">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#22C55E] animate-pulse" />
+          <span>{lang === 'en' ? 'Our Foundation' : 'Notre Fondation & Histoire'}</span>
+        </div>
+
+        {/* Split Section Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12">
+          <div className="lg:col-span-7">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight leading-[1.1]">
+              {lang === 'en' ? 'Building The Future Of Malian Football' : 'Construire L\'Avenir Du Football Malien'}
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight">
-            {lang === 'en' ? 'Building The Future Of Malian Football' : 'Construire L\'Avenir Du Football Malien'}
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#1F2937]/70">
-            {lang === 'en'
-              ? 'Founded on August 12, 2024, in Bamako, TANDEM FOOT CLUB combines UEFA methodology with local passion.'
-              : 'Fondé le 12 Août 2024 à Bamako, le TANDEM FOOT CLUB allie la méthodologie UEFA à la passion locale.'}
-          </p>
+          <div className="lg:col-span-5">
+            <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
+              {lang === 'en'
+                ? 'Founded on August 12, 2024, in Bamako, TANDEM FOOT CLUB combines elite coaching methodology with local talent to shape tomorrow\'s football stars.'
+                : 'Fondé le 12 Août 2024 à Bamako, le TANDEM FOOT CLUB allie la méthodologie de pointe à la passion locale pour former les futurs champions du football.'}
+            </p>
+          </div>
         </div>
 
         {/* Two Column Layout: Left Interactive Tabs & Content, Right Visual Gallery */}

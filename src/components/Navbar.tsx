@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
-import { Language } from '../types';
-import { ACADEMY_INFO } from '../data/academyData';
-import { Phone, MapPin, Globe, Menu, X, ChevronRight, Award } from 'lucide-react';
+import { Language, PageRoute } from '../types';
+import { Globe, Calendar, ArrowUpRight, Menu, X, ChevronRight } from 'lucide-react';
 
 interface NavbarProps {
   lang: Language;
   onLanguageChange: (lang: Language) => void;
   onOpenEnrollment: () => void;
-  activeSection: string;
+  currentPage: PageRoute;
+  onPageChange: (page: PageRoute) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   lang,
   onLanguageChange,
   onOpenEnrollment,
-  activeSection
+  currentPage,
+  onPageChange
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -40,184 +40,176 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
   }, [mobileMenuOpen]);
 
-  const navLinks = [
-    { id: 'about', label: lang === 'en' ? 'About Us' : 'À Propos' },
-    { id: 'why-us', label: lang === 'en' ? 'Why TFC' : 'Pourquoi TFC' },
-    { id: 'programs', label: lang === 'en' ? 'Programs' : 'Programmes' },
-    { id: 'categories', label: lang === 'en' ? 'Age Groups' : 'Catégories' },
-    { id: 'staff', label: lang === 'en' ? 'Coaching Staff' : 'Staff Technique' },
-    { id: 'facilities', label: lang === 'en' ? 'Facilities' : 'Infrastructures' },
-    { id: 'gallery', label: lang === 'en' ? 'Gallery' : 'Galerie' },
-    { id: 'news', label: lang === 'en' ? 'News' : 'Actualités' },
-    { id: 'contact', label: lang === 'en' ? 'Contact' : 'Contact' },
+  // Clean corporate/academy multi-page links with concise labels
+  const navLinks: { id: PageRoute; label: string }[] = [
+    { id: 'home', label: lang === 'en' ? 'Home' : 'Accueil' },
+    { id: 'academie', label: lang === 'en' ? 'Academy' : 'Académie' },
+    { id: 'scouting', label: 'Scouting' },
+    { id: 'programmes', label: lang === 'en' ? 'Programs' : 'Programmes' },
+    { id: 'media', label: lang === 'en' ? 'Media' : 'Médias' },
+    { id: 'contact', label: 'Contact' },
   ];
 
-  const scrollTo = (id: string) => {
+  const handleNavClick = (pageId: PageRoute) => {
     setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    onPageChange(pageId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* Top Bar with Info & Language */}
-      <div className="bg-[#153E75] text-[#DCEBFF] text-xs py-2 px-4 sm:px-8 border-b border-white/10 hidden md:block">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <MapPin className="w-3.5 h-3.5 text-[#3B82F6]" />
-              <span>{ACADEMY_INFO.headquarters.neighborhood}, {ACADEMY_INFO.headquarters.city}</span>
-            </div>
-            <div className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <Phone className="w-3.5 h-3.5 text-[#3B82F6]" />
-              <span>{ACADEMY_INFO.contacts.phones[0]}</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-white/80 italic font-medium">
-              <Award className="w-3.5 h-3.5 text-[#60A5FA]" />
-              <span>"{ACADEMY_INFO.motto[lang]}"</span>
-            </div>
+    <header className="fixed top-4 left-0 right-0 z-50 px-3 sm:px-6 max-w-7xl mx-auto transition-all duration-300 font-sans select-none">
+      {/* Floating White Pill Navbar */}
+      <div
+        className={`w-full bg-white/95 backdrop-blur-xl rounded-full border border-gray-200/80 shadow-[0_10px_35px_rgba(0,0,0,0.12)] transition-all duration-300 py-2 sm:py-2.5 px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-4 flex-nowrap ${
+          isScrolled ? 'shadow-[0_15px_40px_rgba(0,0,0,0.18)] border-gray-300/80' : ''
+        }`}
+      >
+        {/* Left: TFC Academy Crest & Name */}
+        <button 
+          onClick={() => handleNavClick('home')} 
+          className="flex items-center group flex-shrink-0 text-left cursor-pointer border-none bg-transparent whitespace-nowrap"
+        >
+          <Logo size="sm" lightText={false} />
+        </button>
+
+        {/* Center: Clean Page Navigation Links (Strictly Single Line) */}
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2.5 2xl:gap-4 flex-nowrap flex-shrink">
+          {navLinks.map((link) => {
+            const isActive = currentPage === link.id;
+            return (
+              <button
+                key={link.id}
+                onClick={() => handleNavClick(link.id)}
+                className={`text-xs xl:text-sm font-semibold tracking-tight transition-all cursor-pointer font-sans py-1.5 px-2.5 xl:px-3.5 rounded-full whitespace-nowrap flex-shrink-0 ${
+                  isActive
+                    ? 'text-[#2563EB] bg-blue-50/80 font-bold shadow-xs'
+                    : 'text-slate-700 hover:text-[#2563EB] hover:bg-slate-50'
+                }`}
+              >
+                {link.label}
+              </button>
+            );
+          })}
+        </nav>
+
+        {/* Right Controls: Language, Calendar, & "S'inscrire" Button */}
+        <div className="hidden sm:flex items-center gap-2 xl:gap-3 flex-shrink-0 flex-nowrap">
+          {/* Language Switcher Pill */}
+          <div className="flex items-center gap-0.5 bg-slate-100/90 p-1 rounded-full border border-gray-200/60 flex-shrink-0 whitespace-nowrap">
+            <Globe className="w-3.5 h-3.5 text-[#2563EB] ml-1 mr-0.5" />
+            <button
+              onClick={() => onLanguageChange('fr')}
+              className={`px-2 py-0.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
+                lang === 'fr'
+                  ? 'bg-[#2563EB] text-white shadow-sm'
+                  : 'text-slate-500 hover:text-slate-900'
+              }`}
+            >
+              FR
+            </button>
+            <button
+              onClick={() => onLanguageChange('en')}
+              className={`px-2 py-0.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
+                lang === 'en'
+                  ? 'bg-[#2563EB] text-white shadow-sm'
+                  : 'text-slate-500 hover:text-slate-900'
+              }`}
+            >
+              EN
+            </button>
           </div>
 
-          <div className="flex items-center gap-4">
-            {/* Language Switcher */}
-            <div className="flex items-center gap-1.5 bg-black/20 p-1 rounded-full border border-white/15">
-              <Globe className="w-3.5 h-3.5 text-[#60A5FA] ml-1" />
-              <button
-                onClick={() => onLanguageChange('fr')}
-                className={`px-2 py-0.5 rounded-full text-[11px] font-bold transition-all ${
-                  lang === 'fr'
-                    ? 'bg-[#1E4E92] text-white shadow-sm'
-                    : 'text-[#DCEBFF]/70 hover:text-white'
-                }`}
-              >
-                FR
-              </button>
-              <button
-                onClick={() => onLanguageChange('en')}
-                className={`px-2 py-0.5 rounded-full text-[11px] font-bold transition-all ${
-                  lang === 'en'
-                    ? 'bg-[#1E4E92] text-white shadow-sm'
-                    : 'text-[#DCEBFF]/70 hover:text-white'
-                }`}
-              >
-                EN
-              </button>
+          {/* Calendar Icon Button */}
+          <button
+            onClick={() => handleNavClick('scouting')}
+            title={lang === 'en' ? 'Match Schedule & Scouting' : 'Calendrier & Scouting'}
+            className="w-9 h-9 rounded-full bg-slate-100/90 hover:bg-slate-200/90 border border-gray-200/60 flex items-center justify-center text-[#2563EB] transition-colors cursor-pointer flex-shrink-0 whitespace-nowrap"
+          >
+            <Calendar className="w-4 h-4" />
+          </button>
+
+          {/* "S'inscrire" Dark Navy Pill Button with Blue Arrow Circle */}
+          <button
+            onClick={onOpenEnrollment}
+            className="bg-[#0B1320] hover:bg-[#121E33] text-white font-bold text-xs xl:text-sm pl-3.5 xl:pl-5 pr-1.5 py-1.5 rounded-full flex items-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer group flex-shrink-0 whitespace-nowrap active:scale-95"
+          >
+            <span>{lang === 'en' ? 'Register' : "S'inscrire"}</span>
+            <div className="w-7 h-7 xl:w-8 xl:h-8 rounded-full bg-[#2563EB] text-white flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+              <ArrowUpRight className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
             </div>
-          </div>
+          </button>
+        </div>
+
+        {/* Mobile Hamburger Toggle Button */}
+        <div className="flex sm:hidden items-center gap-2">
+          <button
+            onClick={onOpenEnrollment}
+            className="bg-[#0B1320] text-white font-bold text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 cursor-pointer"
+          >
+            <span>{lang === 'en' ? 'Register' : "S'inscrire"}</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#2563EB]" />
+          </button>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-full bg-slate-100 text-slate-800 hover:bg-slate-200 transition-colors cursor-pointer"
+            aria-label="Toggle Mobile Menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5 text-[#2563EB]" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
       </div>
 
-      {/* Main Glassmorphic Navbar */}
-      <nav
-        className={`transition-all duration-300 ${
-          isScrolled
-            ? 'bg-[#153E75]/90 backdrop-blur-md shadow-2xl py-3 border-b border-white/10'
-            : 'bg-gradient-to-b from-[#153E75]/95 via-[#153E75]/80 to-transparent py-5'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center">
-            <Logo size="md" lightText={true} />
-          </a>
-
-          {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="sm:hidden fixed inset-x-4 top-20 bg-white/98 backdrop-blur-2xl rounded-3xl border border-gray-200 shadow-2xl p-6 z-50 flex flex-col gap-4">
+          <nav className="flex flex-col gap-2">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
+              const isActive = currentPage === link.id;
               return (
                 <button
                   key={link.id}
-                  onClick={() => scrollTo(link.id)}
-                  className={`px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'text-white bg-[#1E4E92] shadow-sm'
-                      : 'text-[#DCEBFF]/80 hover:text-white hover:bg-white/10'
+                  onClick={() => handleNavClick(link.id)}
+                  className={`text-left py-3 px-4 rounded-xl text-sm font-bold transition-colors cursor-pointer flex items-center justify-between ${
+                    isActive ? 'bg-blue-50 text-[#2563EB]' : 'text-slate-800 hover:bg-slate-100'
                   }`}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  <ChevronRight className="w-4 h-4 text-[#2563EB]" />
                 </button>
               );
             })}
-          </div>
+          </nav>
 
-          {/* Right Action & Mobile Controls */}
-          <div className="flex items-center gap-3">
-            {/* Language Switcher Mobile */}
-            <div className="flex lg:hidden items-center gap-1 bg-black/20 p-1 rounded-full border border-white/15 mr-1">
+          <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
+            <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-full">
               <button
                 onClick={() => onLanguageChange('fr')}
-                className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                  lang === 'fr' ? 'bg-[#1E4E92] text-white' : 'text-[#DCEBFF]/70'
+                className={`px-3 py-1 rounded-full text-xs font-bold ${
+                  lang === 'fr' ? 'bg-[#2563EB] text-white' : 'text-slate-600'
                 }`}
               >
                 FR
               </button>
               <button
                 onClick={() => onLanguageChange('en')}
-                className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                  lang === 'en' ? 'bg-[#1E4E92] text-white' : 'text-[#DCEBFF]/70'
+                className={`px-3 py-1 rounded-full text-xs font-bold ${
+                  lang === 'en' ? 'bg-[#2563EB] text-white' : 'text-slate-600'
                 }`}
               >
                 EN
               </button>
             </div>
 
-            {/* Enroll CTA Button */}
-            <button
-              onClick={onOpenEnrollment}
-              className="relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-xs xl:text-sm font-bold text-white bg-gradient-to-r from-[#1E4E92] to-[#2563EB] hover:from-[#153E75] hover:to-[#1E4E92] shadow-blue-glow transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] cursor-pointer group"
-            >
-              <span className="relative z-10">
-                {lang === 'en' ? 'Join Academy' : 'S\'inscrire'}
-              </span>
-              <ChevronRight className="w-4 h-4 text-[#DCEBFF] group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            {/* Mobile Hamburger Toggle */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors"
-              aria-label="Toggle Navigation Menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Navigation Drawer */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[64px] sm:top-[68px] bottom-0 bg-[#153E75]/98 backdrop-blur-2xl z-40 flex flex-col p-6 animate-in slide-in-from-top-4 duration-300 border-t border-white/10 overflow-y-auto">
-          <div className="flex flex-col gap-2 my-auto py-4">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollTo(link.id)}
-                className="flex items-center justify-between px-4 py-3.5 rounded-xl text-left text-base sm:text-lg font-bold text-white hover:bg-[#1E4E92] active:bg-[#1E4E92] transition-colors cursor-pointer"
-              >
-                <span>{link.label}</span>
-                <ChevronRight className="w-5 h-5 text-[#3B82F6]" />
-              </button>
-            ))}
-          </div>
-
-          <div className="pt-6 border-t border-white/15 mt-auto flex flex-col gap-4">
-            <div className="text-xs text-[#DCEBFF]/80 flex flex-col gap-1">
-              <span className="font-bold text-white">{ACADEMY_INFO.name}</span>
-              <span>{ACADEMY_INFO.headquarters.fullAddress}</span>
-              <span>{ACADEMY_INFO.contacts.phones[0]}</span>
-            </div>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenEnrollment();
               }}
-              className="w-full py-4 rounded-2xl font-extrabold text-center text-white bg-gradient-to-r from-[#1E4E92] to-[#2563EB] shadow-lg text-sm sm:text-base cursor-pointer hover:opacity-95 active:scale-98 transition-all"
+              className="bg-[#0B1320] text-white font-bold text-xs px-5 py-2.5 rounded-full flex items-center gap-2 cursor-pointer shadow-md"
             >
-              {lang === 'en' ? 'Book Trial Session' : 'Réserver une Détection'}
+              <span>{lang === 'en' ? 'Register' : "S'inscrire"}</span>
+              <ArrowUpRight className="w-4 h-4 text-[#2563EB]" />
             </button>
           </div>
         </div>
@@ -225,3 +217,4 @@ export const Navbar: React.FC<NavbarProps> = ({
     </header>
   );
 };
+

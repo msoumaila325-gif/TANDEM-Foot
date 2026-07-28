@@ -1,24 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Logo } from './Logo';
 import { Language } from '../types';
-import { ACADEMY_INFO } from '../data/academyData';
 import {
-  ChevronDown,
-  Trophy,
-  ShieldCheck,
-  Users,
-  ArrowRight,
+  ChevronRight,
+  ChevronLeft,
   Play,
-  Sparkles,
-  MapPin,
-  Calendar,
   Ticket,
-  CheckCircle2,
+  ArrowRight,
+  ArrowUpRight,
+  Calendar,
+  Sparkles,
+  Trophy,
   X,
-  Volume2,
-  VolumeX,
-  Activity
+  Search,
+  Globe
 } from 'lucide-react';
 
 interface HeroProps {
@@ -27,296 +22,294 @@ interface HeroProps {
   onExplorePrograms: () => void;
 }
 
+interface HeroSlide {
+  id: number;
+  category: { en: string; fr: string };
+  title: { en: string; fr: string };
+  subtitle: { en: string; fr: string };
+  ctaText: { en: string; fr: string };
+  ctaAction: 'enroll' | 'squad' | 'programs' | 'video';
+  image: string;
+  badge?: string;
+  date?: string;
+}
+
 export const Hero: React.FC<HeroProps> = ({
   lang,
   onOpenEnrollment,
   onExplorePrograms,
 }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('U13');
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState<boolean>(false);
-  const [isMuted, setIsMuted] = useState<boolean>(true);
+  const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(true);
 
-  const categories = [
-    { id: 'U11', label: 'U11 (8-11 ans)', focus: 'Éveil & Technique de base' },
-    { id: 'U13', label: 'U13 (12-13 ans)', focus: 'Maîtrise Tactique & Dribble' },
-    { id: 'U15', label: 'U15 (14-15 ans)', focus: 'Vitesse & Intelligence de Jeu' },
-    { id: 'U17', label: 'U17 (16-17 ans)', focus: 'Préparation Haute Performance' },
-    { id: 'U20', label: 'U20 (18-20 ans)', focus: 'Passerelle Professionnelle' },
+  const slides: HeroSlide[] = [
+    {
+      id: 0,
+      category: { en: 'GRAND FINAL MATCH REPORT', fr: 'COMPTE-RENDU DE MATCH — FINALE' },
+      title: {
+        en: 'TANDEM U20 Triumphs 3-1 in Regional Championship Final',
+        fr: 'Le TANDEM FOOT CLUB U20 S\'impose 3-1 en Finale Régionale'
+      },
+      subtitle: {
+        en: 'Mamadou Traoré scores double to secure victory at N\'Tabacoro Stadium in front of international scouts.',
+        fr: 'Mamadou Traoré inscrit un doublé décisif au Stade de N\'Tabacoro devant les recruteurs internationaux.'
+      },
+      ctaText: { en: 'Match Report & Highlights', fr: 'Rapport de Match & Résumé' },
+      ctaAction: 'video',
+      image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop',
+      badge: 'RÉSULTAT OFFICIEL',
+      date: '24 Juillet 2026'
+    },
+    {
+      id: 1,
+      category: { en: 'ACADEMY SCOUTING SPOTLIGHT', fr: 'PÉPITE À LA UNE — SCOUTING' },
+      title: {
+        en: 'Ibrahim Coulibaly (U17) Named West Africa Prospect of the Month',
+        fr: 'Ibrahim Coulibaly (U17) Élu Meilleur Prospect d\'Afrique de l\'Ouest'
+      },
+      subtitle: {
+        en: '12 goals and 14 assists in 18 games. High-level technical playmaker attracting European interest.',
+        fr: '12 buts et 14 passes décisives en 18 matchs. Meneur de jeu suivi par des clubs européens.'
+      },
+      ctaText: { en: 'View Player Scout Card', fr: 'Consulter la Fiche Joueur' },
+      ctaAction: 'squad',
+      image: 'https://images.unsplash.com/photo-1517649763962-0c623266010b?q=80&w=1920&auto=format&fit=crop',
+      badge: 'SCOUT REPORT',
+      date: 'Saison 2025-2026'
+    },
+    {
+      id: 2,
+      category: { en: 'OFFICIAL ACADEMY TRYOUTS 2026', fr: 'JOURNÉES DE DÉTECTION OFFICIELLES 2026' },
+      title: {
+        en: 'Join The Elite: Open Tryouts Registration for Season 2026-2027',
+        fr: 'Rejoignez L\'Élite : Inscriptions Ouvertes Pour la Rentrée 2026'
+      },
+      subtitle: {
+        en: 'Categories U11, U13, U15, U17 & U20. Professional athletic & academic sport-study program.',
+        fr: 'Catégories U11 à U20. Programme complet sport-études, préparation athlétique et suivi médical.'
+      },
+      ctaText: { en: 'Book Trial Pass Now', fr: 'Réserver un Pass Détection' },
+      ctaAction: 'enroll',
+      image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1920&auto=format&fit=crop',
+      badge: 'INSCRIPTIONS OUVERTES',
+      date: 'Prochaine Session à Bamako'
+    },
+    {
+      id: 3,
+      category: { en: 'WORLD-CLASS FACILITIES', fr: 'INFRASTRUCTURES ET ÉQUIPEMENTS' },
+      title: {
+        en: 'FIFA-Standard Synthetic Pitch & High-Performance Fitness Hub',
+        fr: 'Terrain Synthétique Normes FIFA & Centre de Récupération Médicale'
+      },
+      subtitle: {
+        en: 'Empowering athletes with modern video strategy rooms and physical conditioning centers.',
+        fr: 'Un cadre d\'entraînement moderne à Bamako conçu pour le développement de la haute performance.'
+      },
+      ctaText: { en: 'Explore Academy Programs', fr: 'Découvrir nos Programmes' },
+      ctaAction: 'programs',
+      image: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1920&auto=format&fit=crop',
+      badge: 'CENTRE D\'ÉLITE',
+      date: 'Complexe N\'Tabacoro'
+    }
   ];
 
+  // Auto slider effect
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, slides.length]);
+
+  const nextSlideIndex = (currentSlide + 1) % slides.length;
+  const nextSlide = slides[nextSlideIndex];
+
+  const handleCtaClick = (action: string) => {
+    if (action === 'enroll') {
+      onOpenEnrollment();
+    } else if (action === 'squad') {
+      const el = document.getElementById('squad');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else if (action === 'programs') {
+      onExplorePrograms();
+    } else if (action === 'video') {
+      setIsVideoModalOpen(true);
+    }
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-28 sm:pt-36 lg:pt-44 pb-16 sm:pb-20 overflow-hidden bg-[#0A1A33] text-white selection:bg-[#2563EB] selection:text-white">
-      {/* Background Cinematic Video Layer */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted={isMuted}
-          playsInline
-          className="w-full h-full object-cover opacity-30 scale-105 filter contrast-125 brightness-75"
-          poster="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop"
+    <section className="relative w-full h-[90vh] sm:h-[95vh] min-h-[750px] lg:min-h-[850px] max-h-[1050px] bg-[#050B14] text-white overflow-hidden select-none">
+      {/* Background Slides Stack */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute inset-0 z-0"
         >
-          <source
-            src="https://assets.mixkit.co/videos/preview/mixkit-football-player-dribbling-the-ball-41315-large.mp4"
-            type="video/mp4"
+          {/* Main Background Image */}
+          <img
+            src={slides[currentSlide].image}
+            alt={slides[currentSlide].title.en}
+            className="w-full h-full object-cover filter contrast-125 brightness-75"
           />
-        </video>
 
-        {/* Layered Gradient Blends */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A33] via-[#0A1A33]/85 to-[#0F3875]/60" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1E4E92]/40 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent" />
-      </div>
+          {/* Deep Royal Navy & Black Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/60 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050B14]/95 via-[#050B14]/50 to-transparent" />
+          <div className="absolute inset-0 bg-[#002244]/40 mix-blend-multiply" />
+        </motion.div>
+      </AnimatePresence>
 
-      {/* Decorative Floating Mesh & Glowing Orbs */}
-      <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-[#1E4E92]/30 rounded-full blur-[120px] pointer-events-none animate-pulse-slow" />
-      <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-[#2563EB]/25 rounded-full blur-[100px] pointer-events-none" />
+      {/* Decorative Royal Blue / Electric Glow Effects */}
+      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#2563EB]/20 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#1D4ED8]/30 rounded-full blur-[130px] pointer-events-none" />
 
-      
-
-      {/* Main Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      {/* MAIN HERO CONTENT CONTAINER */}
+      <div className="relative z-10 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-end pt-32 sm:pt-40 pb-16 sm:pb-20">
         
-        {/* Hero Grid Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           
-          {/* Left Column: Headline & Action Controls (7 Cols) */}
-          <div className="lg:col-span-7 text-center lg:text-left space-y-8">
-            
-
-            {/* Main Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.12] sm:leading-[1.08] font-heading"
-            >
-              {lang === 'en' ? (
-                <>
-                  Forge Your Legacy At <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] via-white to-[#3B82F6] font-black">TANDEM FOOTBALL CLUB</span>
-                </>
-              ) : (
-                <>
-                  Forger L'Avenir Du <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] via-white to-[#3B82F6] font-black">Football Malien</span> Avec Élégance
-                </>
-              )}
-            </motion.h1>
-
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-sm sm:text-lg md:text-xl text-[#DCEBFF]/85 leading-relaxed max-w-2xl mx-auto lg:mx-0"
-            >
-              {lang === 'en'
-                ? 'Developing technical excellence, tactical intelligence, and professional discipline for young athletes in Bamako.'
-                : 'Centre de formation d’excellence à Bamako. Nous révélons le potentiel technique, physique et mental des jeunes talents.'}
-            </motion.p>
-
-            {/* Interactive Age Category Pills */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="p-3.5 sm:p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 space-y-3"
-            >
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-xs font-bold uppercase tracking-wider text-[#60A5FA]">
-                <span>{lang === 'en' ? 'Select Squad Category:' : 'Catégories D\'Âge Requis:'}</span>
-                <span className="text-emerald-400 flex items-center gap-1 text-[11px] sm:text-xs">
-                  <Activity className="w-3.5 h-3.5 flex-shrink-0" />
-                  <span className="truncate">{categories.find(c => c.id === selectedCategory)?.focus}</span>
-                </span>
-              </div>
-
-              <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
-                {categories.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => setSelectedCategory(cat.id)}
-                    className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
-                      selectedCategory === cat.id
-                        ? 'bg-gradient-to-r from-[#1E4E92] to-[#2563EB] text-white shadow-blue-glow scale-105 border border-white/30'
-                        : 'bg-white/10 hover:bg-white/20 text-[#DCEBFF] border border-white/10'
-                    }`}
-                  >
-                    {cat.id}
-                  </button>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-col sm:flex-row items-center gap-4 pt-2"
-            >
-              <button
-                onClick={onOpenEnrollment}
-                className="w-full sm:w-auto px-8 py-4 rounded-2xl text-sm font-extrabold text-white bg-gradient-to-r from-[#1E4E92] via-[#2563EB] to-[#1E4E92] hover:shadow-blue-glow-lg hover:scale-[1.03] active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer border border-white/20 shadow-2xl"
+          {/* BOTTOM LEFT: Headline & Actions */}
+          <div className="lg:col-span-8 space-y-5 sm:space-y-6">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`text-${currentSlide}`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="space-y-4 sm:space-y-5"
               >
-                <Ticket className="w-5 h-5 text-[#DCEBFF]" />
-                <span>{lang === 'en' ? 'Get Trial Pass' : 'Obtenir Un Pass Détection'}</span>
-                <ArrowRight className="w-5 h-5 text-white" />
-              </button>
-
-              <button
-                onClick={() => setIsVideoModalOpen(true)}
-                className="w-full sm:w-auto px-7 py-4 rounded-2xl text-sm font-extrabold text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 hover:scale-[1.03] active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer"
-              >
-                <Play className="w-4 h-4 text-[#60A5FA] fill-[#60A5FA]" />
-                <span>{lang === 'en' ? 'Watch Academy Teaser' : 'Vidéo De Présentation'}</span>
-              </button>
-            </motion.div>
-
-            {/* Social Proof / Avatars */}
-            <div className="pt-4 flex items-center justify-center lg:justify-start gap-4 text-xs text-[#DCEBFF]/80">
-              <div className="flex -space-x-3">
-                <img className="w-9 h-9 rounded-full border-2 border-[#0A1A33] object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Player" />
-                <img className="w-9 h-9 rounded-full border-2 border-[#0A1A33] object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" alt="Player" />
-                <img className="w-9 h-9 rounded-full border-2 border-[#0A1A33] object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop" alt="Player" />
-              </div>
-              <div>
-                <span className="font-extrabold text-white">150+ Joueurs</span> inscrits au TFC Bamako
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Interactive 3D Card Spotlight (5 Cols) */}
-          <div className="lg:col-span-5 relative flex justify-center">
-            
-            {/* Main Interactive Glassmorphism Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="w-full max-w-md rounded-3xl bg-gradient-to-b from-white/15 via-white/5 to-white/10 backdrop-blur-2xl border border-white/20 p-6 shadow-2xl space-y-6 relative group hover:border-[#3B82F6]/50 transition-all duration-500"
-            >
-              {/* Header Badge */}
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <Logo size="sm" showText={true} lightText={true} />
-                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-extrabold uppercase">
-                  CENTRE AGRÉÉ
-                </span>
-              </div>
-
-              {/* Central Shield Crest Highlight */}
-              <div className="relative py-6 flex items-center justify-center">
-                <div className="absolute w-40 h-40 bg-[#2563EB]/40 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500 pointer-events-none" />
-                <Logo size="xl" showText={false} />
-              </div>
-
-              {/* Match / Session Countdown Box */}
-              <div className="p-4 rounded-2xl bg-[#0A1A33]/80 border border-white/10 space-y-3">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-[#60A5FA] font-extrabold uppercase tracking-wider flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5" />
-                    Prochaine Session Détection
+                {/* Category Eyebrow */}
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.12em] text-[#60A5FA] font-sans">
+                    {lang === 'fr' ? slides[currentSlide].category.fr : slides[currentSlide].category.en}
                   </span>
-                  <span className="text-white font-mono font-bold">Bamako</span>
                 </div>
 
-                <div className="flex items-center justify-between pt-1">
-                  <div>
-                    <div className="text-sm font-bold text-white font-heading">Terrain de N'Tabacoro</div>
-                    <div className="text-xs text-gray-400">Samedi Prochain • 08h00 - 11h30</div>
-                  </div>
+                {/* Main Display Headline with pro premium typography style */}
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-[1.08] font-heading max-w-4xl drop-shadow-2xl">
+                  {lang === 'fr' ? slides[currentSlide].title.fr : slides[currentSlide].title.en}
+                </h1>
+
+                {/* Subtitle */}
+                <p className="text-sm sm:text-base lg:text-lg text-slate-200/90 max-w-2xl leading-relaxed font-normal drop-shadow-md">
+                  {lang === 'fr' ? slides[currentSlide].subtitle.fr : slides[currentSlide].subtitle.en}
+                </p>
+
+                {/* Rounded Pill Action Buttons matching reference image */}
+                <div className="pt-3 flex flex-wrap items-center gap-4">
+                  {/* White Pill Button with Green Circle Arrow */}
                   <button
                     onClick={onOpenEnrollment}
-                    className="px-3.5 py-1.5 rounded-xl bg-[#1E4E92] hover:bg-[#2563EB] text-white text-xs font-bold transition-colors cursor-pointer"
+                    className="bg-white hover:bg-slate-100 text-slate-900 font-bold text-xs sm:text-sm pl-6 pr-2 py-2 rounded-full flex items-center gap-3 transition-all duration-200 shadow-xl cursor-pointer active:scale-95 group"
                   >
-                    Réserver
+                    <span>{lang === 'fr' ? 'Inscriptions' : 'Registration'}</span>
+                    <div className="w-9 h-9 rounded-full bg-[#22C55E] text-white flex items-center justify-center group-hover:scale-105 transition-transform shadow-md">
+                      <ArrowUpRight className="w-4 h-4" />
+                    </div>
+                  </button>
+
+                  {/* Translucent Glass Pill Button with Arrow */}
+                  <button
+                    onClick={() => handleCtaClick(slides[currentSlide].ctaAction)}
+                    className="bg-white/15 hover:bg-white/25 border border-white/30 backdrop-blur-md text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full flex items-center gap-2.5 transition-all cursor-pointer active:scale-95 group"
+                  >
+                    <span>{lang === 'fr' ? slides[currentSlide].ctaText.fr : slides[currentSlide].ctaText.en}</span>
+                    <ArrowUpRight className="w-4 h-4 text-white/80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </button>
                 </div>
-              </div>
-
-              {/* Key Highlights Pill Row */}
-              <div className="grid grid-cols-2 gap-3 text-xs">
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center gap-2">
-                  <Trophy className="w-4 h-4 text-[#60A5FA]" />
-                  <div>
-                    <div className="font-bold text-white">Terrain Synthétique</div>
-                    <div className="text-[10px] text-gray-400">Aux Normes FIFA</div>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-[#60A5FA]" />
-                  <div>
-                    <div className="font-bold text-white">Suivi Scolaire</div>
-                    <div className="text-[10px] text-gray-400">Équilibre & Études</div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </AnimatePresence>
           </div>
+
+          {/* BOTTOM RIGHT: Slide Navigation & Next Preview Thumbnail */}
+          <div className="lg:col-span-4 flex flex-col items-start lg:items-end gap-5">
+            
+            {/* Slide Counter & Progress Bar */}
+            <div className="flex items-center gap-4 text-xs font-black tracking-widest text-white">
+              <span className="text-[#60A5FA] text-sm font-mono">
+                0{currentSlide + 1}
+              </span>
+              <div className="w-28 sm:w-36 h-1.5 bg-white/20 relative rounded-full overflow-hidden">
+                <motion.div
+                  key={`progress-${currentSlide}`}
+                  initial={{ width: '0%' }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: 6, ease: 'linear' }}
+                  className="h-full bg-[#2563EB]"
+                />
+              </div>
+              <span className="text-gray-400 text-sm font-mono">
+                0{slides.length}
+              </span>
+            </div>
+
+            {/* Next Story Card */}
+            <div
+              onMouseEnter={() => setIsAutoPlaying(false)}
+              onMouseLeave={() => setIsAutoPlaying(true)}
+              className="flex items-center gap-3"
+            >
+              <div className="text-right hidden sm:block">
+                <span className="text-[10px] uppercase font-black tracking-widest text-gray-400 block">
+                  {lang === 'en' ? 'NEXT HIGHLIGHT' : 'À SUIVRE'}
+                </span>
+                <span className="text-xs font-bold text-white max-w-[170px] truncate block">
+                  {lang === 'fr' ? nextSlide.title.fr : nextSlide.title.en}
+                </span>
+              </div>
+
+              {/* Interactive Thumbnail Card with Rounded Corners */}
+              <button
+                onClick={() => setCurrentSlide(nextSlideIndex)}
+                className="relative w-36 sm:w-44 h-20 sm:h-24 rounded-xl overflow-hidden border-2 border-white/30 hover:border-[#3B82F6] transition-all duration-300 group cursor-pointer shadow-2xl flex-shrink-0"
+              >
+                <img
+                  src={nextSlide.image}
+                  alt="Next slide"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors" />
+                <div className="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-[10px] font-black text-white">
+                  <span className="bg-[#2563EB] text-white px-2 py-0.5 rounded-md font-mono">
+                    0{nextSlideIndex + 1}
+                  </span>
+                  <ChevronRight className="w-4 h-4 text-[#60A5FA] group-hover:translate-x-1 transition-transform" />
+                </div>
+              </button>
+
+              {/* Navigation Arrows */}
+              <div className="flex flex-col gap-1.5">
+                <button
+                  onClick={() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)}
+                  className="p-2 rounded-lg bg-white/10 hover:bg-[#2563EB] hover:text-white transition-colors cursor-pointer text-white"
+                  title="Previous"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setCurrentSlide(nextSlideIndex)}
+                  className="p-2 rounded-lg bg-white/10 hover:bg-[#2563EB] hover:text-white transition-colors cursor-pointer text-white"
+                  title="Next"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
-        {/* Bottom Stat Counter Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 p-6 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/15 shadow-2xl"
-        >
-          <div className="flex flex-col items-center justify-center p-3 text-center border-r border-white/10 last:border-0">
-            <div className="flex items-center gap-2 text-3xl sm:text-4xl font-black text-white font-heading">
-              <Users className="w-6 h-6 text-[#60A5FA]" />
-              <span>150+</span>
-            </div>
-            <span className="text-xs text-[#DCEBFF]/80 font-semibold mt-1">
-              {lang === 'en' ? 'Young Athletes Formed' : 'Joueurs Formés'}
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center justify-center p-3 text-center border-r border-white/10 last:border-0 md:border-r">
-            <div className="flex items-center gap-2 text-3xl sm:text-4xl font-black text-white font-heading">
-              <Trophy className="w-6 h-6 text-[#60A5FA]" />
-              <span>18+</span>
-            </div>
-            <span className="text-xs text-[#DCEBFF]/80 font-semibold mt-1">
-              {lang === 'en' ? 'Weekly Training Hours' : 'Séances Hebdomadaires'}
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center justify-center p-3 text-center border-r border-white/10 last:border-0">
-            <div className="flex items-center gap-2 text-3xl sm:text-4xl font-black text-white font-heading">
-              <ShieldCheck className="w-6 h-6 text-[#60A5FA]" />
-              <span>100%</span>
-            </div>
-            <span className="text-xs text-[#DCEBFF]/80 font-semibold mt-1">
-              {lang === 'en' ? 'CAF Certified Staff' : 'Coachs Diplômés CAF'}
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center justify-center p-3 text-center">
-            <div className="flex items-center gap-2 text-3xl sm:text-4xl font-black text-white font-heading">
-              <Sparkles className="w-6 h-6 text-[#60A5FA]" />
-              <span>5</span>
-            </div>
-            <span className="text-xs text-[#DCEBFF]/80 font-semibold mt-1">
-              {lang === 'en' ? 'Squad Categories (U11-U20)' : 'Catégories D\'Âge (U11-U20)'}
-            </span>
-          </div>
-        </motion.div>
-
-        {/* Scroll Down Indicator */}
-        <motion.a
-          href="#about"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="mt-10 text-[#DCEBFF]/70 hover:text-white transition-colors flex flex-col items-center gap-2 cursor-pointer"
-        >
-          <span className="text-[10px] font-extrabold uppercase tracking-[0.2em]">
-            {lang === 'en' ? 'Scroll To Discover TFC' : 'Découvrir L\'Académie'}
-          </span>
-          <ChevronDown className="w-5 h-5 text-[#3B82F6]" />
-        </motion.a>
       </div>
 
-      {/* Video Modal Lightbox */}
+      {/* Video Modal */}
       <AnimatePresence>
         {isVideoModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
@@ -324,7 +317,7 @@ export const Hero: React.FC<HeroProps> = ({
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="relative max-w-4xl w-full rounded-3xl overflow-hidden shadow-2xl bg-[#0A1A33] border border-white/20"
+              className="relative max-w-4xl w-full rounded-2xl overflow-hidden shadow-2xl bg-[#0A1A33] border border-white/20"
             >
               <button
                 onClick={() => setIsVideoModalOpen(false)}
@@ -334,33 +327,32 @@ export const Hero: React.FC<HeroProps> = ({
               </button>
 
               <div className="aspect-video w-full bg-black relative flex items-center justify-center">
-                <video
-                  controls
-                  autoPlay
-                  className="w-full h-full object-cover"
-                >
+                <video controls autoPlay className="w-full h-full object-cover">
                   <source
                     src="https://assets.mixkit.co/videos/preview/mixkit-football-player-dribbling-the-ball-41315-large.mp4"
                     type="video/mp4"
                   />
-                  Your browser does not support the video tag.
+                  Your browser does not support video playback.
                 </video>
               </div>
 
-              <div className="p-6 flex items-center justify-between text-white">
+              <div className="p-6 flex items-center justify-between text-white bg-[#0A1A33]">
                 <div>
                   <h3 className="text-lg font-bold font-heading">
-                    TANDEM FOOTBALL CLUB • Film de Présentation
+                    TANDEM FOOTBALL CLUB • Official Teaser & Highlights
                   </h3>
-                  <p className="text-xs text-gray-400">
-                    Découvrez le quotidien, la discipline et les infrastructures de nos jeunes à Bamako.
+                  <p className="text-xs text-gray-300">
+                    Découvrez les coulisses de l'académie, les infrastructures et les jeunes talents de Bamako.
                   </p>
                 </div>
                 <button
-                  onClick={onOpenEnrollment}
-                  className="px-5 py-2.5 rounded-xl bg-[#1E4E92] hover:bg-[#2563EB] text-white text-xs font-bold transition-colors cursor-pointer"
+                  onClick={() => {
+                    setIsVideoModalOpen(false);
+                    onOpenEnrollment();
+                  }}
+                  className="px-6 py-3 rounded-xl bg-[#2563EB] hover:bg-blue-600 text-white text-xs font-black uppercase tracking-wider transition-colors cursor-pointer"
                 >
-                  Inscrire Mon Enfant
+                  Pass Détection
                 </button>
               </div>
             </motion.div>

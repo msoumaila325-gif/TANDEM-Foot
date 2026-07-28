@@ -1,118 +1,144 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Testimonial, Language } from '../types';
+import { motion } from 'motion/react';
+import { Language } from '../types';
 import { TESTIMONIALS_DATA } from '../data/academyData';
-import { Quote, Star, ChevronLeft, ChevronRight, MessageSquareQuote } from 'lucide-react';
+import { Star, MessageSquareQuote, Mail, Send, CheckCircle2 } from 'lucide-react';
 
 interface TestimonialsProps {
   lang: Language;
 }
 
 export const Testimonials: React.FC<TestimonialsProps> = ({ lang }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [newsletterEmail, setNewsletterEmail] = useState<string>('');
+  const [newsletterSubscribed, setNewsletterSubscribed] = useState<boolean>(false);
 
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+    setNewsletterSubscribed(true);
+    setTimeout(() => {
+      setNewsletterSubscribed(false);
+      setNewsletterEmail('');
+    }, 4000);
   };
 
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length);
-  };
-
-  const current = TESTIMONIALS_DATA[currentIndex];
+  // Exactly 3 testimonials displayed on 1 row
+  const testimonials = TESTIMONIALS_DATA.slice(0, 3);
 
   return (
-    <section className="py-24 bg-[#F5F7FA] relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-24 bg-white text-slate-900 border-t border-slate-100 select-none">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1E4E92] text-white text-xs font-bold uppercase tracking-widest mb-4">
-            <MessageSquareQuote className="w-4 h-4 text-[#DCEBFF]" />
-            <span>{lang === 'en' ? 'Community Voices' : 'Témoignages'}</span>
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-100 text-[#153E75] text-xs font-bold uppercase tracking-wider mb-3">
+            <MessageSquareQuote className="w-3.5 h-3.5 text-[#2563EB]" />
+            <span>{lang === 'en' ? 'Testimonials' : 'Témoignages'}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight">
-            {lang === 'en' ? 'What Parents & Partners Say' : 'Ce Que Disent Parents Et Partenaires'}
+
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-[#153E75] font-heading tracking-tight">
+            {lang === 'en' ? 'What People Say' : 'Ce Que Disent Nos Familles & Partenaires'}
           </h2>
         </div>
 
-        {/* Carousel Card */}
-        <div className="relative rounded-3xl bg-white p-8 sm:p-12 border border-gray-200 shadow-xl overflow-hidden">
-          <Quote className="absolute top-6 right-6 w-24 h-24 text-[#DCEBFF]/50 pointer-events-none" />
-
-          <AnimatePresence mode="wait">
+        {/* 3 Cards on 1 Row */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {testimonials.map((item, idx) => (
             <motion.div
-              key={current.id}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.4 }}
-              className="flex flex-col md:flex-row items-center gap-8 relative z-10"
+              key={item.id}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: idx * 0.1 }}
+              className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between"
             >
-              {/* Avatar */}
-              <img
-                src={current.avatar}
-                alt={current.name}
-                className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl object-cover border-4 border-[#1E4E92] shadow-lg flex-shrink-0"
-                referrerPolicy="no-referrer"
-              />
-
-              {/* Content */}
-              <div className="space-y-4 text-center md:text-left flex-1">
-                {/* Stars */}
-                <div className="flex items-center justify-center md:justify-start gap-1">
-                  {[...Array(current.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-[#3B82F6] text-[#3B82F6]" />
+              <div className="space-y-3.5">
+                {/* Rating Stars */}
+                <div className="flex items-center gap-1">
+                  {[...Array(item.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
 
-                <p className="text-base sm:text-xl text-gray-700 italic font-medium leading-relaxed">
-                  "{current.quote[lang]}"
+                {/* Quote Text */}
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic font-normal">
+                  "{item.quote[lang]}"
                 </p>
+              </div>
 
-                <div>
-                  <h4 className="text-lg font-bold text-[#153E75] font-heading">
-                    {current.name}
+              {/* Author Footer */}
+              <div className="flex items-center gap-3 pt-5 mt-5 border-t border-slate-100">
+                <img
+                  src={item.avatar}
+                  alt={item.name}
+                  className="w-10 h-10 rounded-full object-cover border border-slate-200"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="overflow-hidden">
+                  <h4 className="text-xs sm:text-sm font-bold text-[#153E75] font-heading truncate">
+                    {item.name}
                   </h4>
-                  <span className="text-xs font-bold text-[#1E4E92] uppercase tracking-wider">
-                    {current.role[lang]}
-                  </span>
+                  <p className="text-[11px] font-medium text-slate-500 truncate">
+                    {item.role[lang]}
+                  </p>
                 </div>
               </div>
             </motion.div>
-          </AnimatePresence>
-
-          {/* Carousel Navigation Buttons */}
-          <div className="mt-8 pt-6 border-t border-gray-100 flex items-center justify-between">
-            <div className="flex gap-2">
-              {TESTIMONIALS_DATA.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                    currentIndex === idx ? 'w-8 bg-[#1E4E92]' : 'w-2.5 bg-gray-300'
-                  }`}
-                />
-              ))}
-            </div>
-
-            <div className="flex gap-3">
-              <button
-                onClick={prevTestimonial}
-                className="p-3 rounded-full bg-[#F5F7FA] text-[#153E75] hover:bg-[#1E4E92] hover:text-white transition-colors cursor-pointer"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={nextTestimonial}
-                className="p-3 rounded-full bg-[#F5F7FA] text-[#153E75] hover:bg-[#1E4E92] hover:text-white transition-colors cursor-pointer"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
+
+        {/* Newsletter CTA right below Testimonials */}
+        <div className="mt-16 sm:mt-20 pt-12 border-t border-slate-200/80 max-w-3xl mx-auto text-center space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 text-[#2563EB] text-xs font-bold uppercase tracking-wider">
+            <Mail className="w-3.5 h-3.5" />
+            <span>{lang === 'fr' ? 'RESTEZ INFORMÉ EN AVANT-PREMIÈRE' : 'STAY INFORMED IN REAL-TIME'}</span>
+          </div>
+
+          <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#153E75]">
+            {lang === 'fr' 
+              ? 'Abonnez-vous à la Newsletter Officielle du TFC' 
+              : 'Subscribe to the Official TFC Newsletter'}
+          </h3>
+
+          <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed font-normal">
+            {lang === 'fr'
+              ? 'Recevez directement dans votre boîte mail les dates de détection, les résumés de matchs et les actualités exclusives du Tandem Football Club.'
+              : 'Get tryout dates, match highlights, and exclusive Tandem Football Club news delivered directly to your inbox.'}
+          </p>
+
+          {newsletterSubscribed ? (
+            <div className="p-3.5 rounded-full bg-emerald-50 border border-emerald-200 text-[#22C55E] text-xs font-bold flex items-center justify-center gap-2 max-w-md mx-auto mt-4">
+              <CheckCircle2 className="w-4 h-4 text-[#22C55E]" />
+              <span>{lang === 'fr' ? 'Abonnement confirmé ! Merci pour votre confiance.' : 'Subscribed successfully! Thank you.'}</span>
+            </div>
+          ) : (
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row items-center gap-2.5 max-w-md mx-auto pt-2">
+              <div className="relative flex-1 w-full">
+                <Mail className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="email"
+                  required
+                  placeholder={lang === 'fr' ? 'Votre adresse email...' : 'Your email address...'}
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2.5 rounded-full bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-medium focus:outline-none focus:border-[#2563EB] transition-colors"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-[#153E75] hover:bg-[#1E4E92] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 shadow-xs"
+              >
+                <span>{lang === 'fr' ? 'S\'Abonner' : 'Subscribe'}</span>
+                <Send className="w-3.5 h-3.5" />
+              </button>
+            </form>
+          )}
+        </div>
+
       </div>
     </section>
   );
 };
+
+
+

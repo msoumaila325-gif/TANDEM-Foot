@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Language } from './types';
+import { Language, PageRoute } from './types';
 import { LoadingScreen } from './components/LoadingScreen';
 import { Navbar } from './components/Navbar';
+import { PageHeader } from './components/PageHeader';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
 import { WhyChooseUs } from './components/WhyChooseUs';
@@ -10,45 +11,32 @@ import { AgeCategories } from './components/AgeCategories';
 import { CoachingStaff } from './components/CoachingStaff';
 import { Facilities } from './components/Facilities';
 import { StatsCounter } from './components/StatsCounter';
-import { Gallery } from './components/Gallery';
+import { MediaSection } from './components/MediaSection';
 import { Testimonials } from './components/Testimonials';
-import { LatestNews } from './components/LatestNews';
+import { Gallery } from './components/Gallery';
 import { SponsorsTicker } from './components/SponsorsTicker';
 import { FAQSection } from './components/FAQSection';
 import { ContactSection } from './components/ContactSection';
 import { EnrollmentModal } from './components/EnrollmentModal';
+import { ScoutingHub } from './components/ScoutingHub';
+import { PartnershipsSection } from './components/PartnershipsSection';
+import { MatchCenter } from './components/MatchCenter';
+import { AcademyBentoSections } from './components/AcademyBentoSections';
 import { Footer } from './components/Footer';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('fr'); // Default French for Bamako, Mali
   const [enrollmentOpen, setEnrollmentOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
+  const [currentPage, setCurrentPage] = useState<PageRoute>('home');
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['about', 'why-us', 'programs', 'categories', 'staff', 'facilities', 'gallery', 'news', 'contact'];
-      const scrollPosition = window.scrollY + 200;
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const handlePageChange = (page: PageRoute) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleExplorePrograms = () => {
-    const el = document.getElementById('programs');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setCurrentPage('programmes');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -56,71 +44,132 @@ export default function App() {
       {/* Entrance Loading Screen */}
       <LoadingScreen />
 
-      {/* Navigation Bar */}
+      {/* Persistent Multi-Page Floating Navbar */}
       <Navbar
         lang={lang}
         onLanguageChange={setLang}
         onOpenEnrollment={() => setEnrollmentOpen(true)}
-        activeSection={activeSection}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
       />
 
-      {/* Main Page Sections */}
+      {/* Dynamic Multi-Page Router */}
       <main>
-        {/* 1. Hero */}
-        <Hero
-          lang={lang}
-          onOpenEnrollment={() => setEnrollmentOpen(true)}
-          onExplorePrograms={handleExplorePrograms}
-        />
+        {currentPage === 'home' && (
+          <>
+            <Hero
+              lang={lang}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+              onExplorePrograms={handleExplorePrograms}
+            />
+            <SponsorsTicker lang={lang} />
+            <AboutSection lang={lang} />
+            <StatsCounter lang={lang} />
+            <WhyChooseUs
+              lang={lang}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+            />
+            <Facilities
+              lang={lang}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+            />
+            <MatchCenter lang={lang} />
+            <CoachingStaff lang={lang} />
+            <MediaSection lang={lang} showGallery={false} />
+            <Testimonials lang={lang} />
+          </>
+        )}
 
-        {/* 2. Institutional Sponsors Ticker */}
-        <SponsorsTicker lang={lang} />
+        {currentPage === 'academie' && (
+          <>
+            <PageHeader
+              page="academie"
+              lang={lang}
+              onPageChange={handlePageChange}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+            />
+            <AcademyBentoSections
+              lang={lang}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+            />
+            <CoachingStaff lang={lang} />
+            <Facilities
+              lang={lang}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+            />
+            <Gallery lang={lang} />
+          </>
+        )}
 
-        {/* 3. About Section */}
-        <AboutSection lang={lang} />
+        {currentPage === 'scouting' && (
+          <>
+            <PageHeader
+              page="scouting"
+              lang={lang}
+              onPageChange={handlePageChange}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+            />
+            <ScoutingHub
+              lang={lang}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+            />
+            <MatchCenter lang={lang} />
+            <PartnershipsSection lang={lang} />
+          </>
+        )}
 
-        {/* 4. Why Choose TFC */}
-        <WhyChooseUs lang={lang} />
+        {currentPage === 'programmes' && (
+          <>
+            <PageHeader
+              page="programmes"
+              lang={lang}
+              onPageChange={handlePageChange}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+            />
+            <TrainingPrograms
+              lang={lang}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+            />
+            <AgeCategories
+              lang={lang}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+            />
+            <FAQSection lang={lang} />
+          </>
+        )}
 
-        {/* 5. Training Programs */}
-        <TrainingPrograms
-          lang={lang}
-          onOpenEnrollment={() => setEnrollmentOpen(true)}
-        />
+        {currentPage === 'media' && (
+          <>
+            <PageHeader
+              page="media"
+              lang={lang}
+              onPageChange={handlePageChange}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+            />
+            <MediaSection
+              lang={lang}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+              onPageChange={handlePageChange}
+            />
+          </>
+        )}
 
-        {/* 6. Animated Stats Bar */}
-        <StatsCounter lang={lang} />
-
-        {/* 7. Age Categories (U11-U20) */}
-        <AgeCategories
-          lang={lang}
-          onOpenEnrollment={() => setEnrollmentOpen(true)}
-        />
-
-        {/* 8. Coaching Staff */}
-        <CoachingStaff lang={lang} />
-
-        {/* 9. Facilities */}
-        <Facilities lang={lang} />
-
-        {/* 10. Photo & Highlight Gallery */}
-        <Gallery lang={lang} />
-
-        {/* 11. Testimonials */}
-        <Testimonials lang={lang} />
-
-        {/* 12. Latest News */}
-        <LatestNews lang={lang} />
-
-        {/* 13. FAQ */}
-        <FAQSection lang={lang} />
-
-        {/* 14. Contact Section & Map */}
-        <ContactSection lang={lang} />
+        {currentPage === 'contact' && (
+          <>
+            <PageHeader
+              page="contact"
+              lang={lang}
+              onPageChange={handlePageChange}
+              onOpenEnrollment={() => setEnrollmentOpen(true)}
+            />
+            <ContactSection lang={lang} />
+            <FAQSection lang={lang} />
+          </>
+        )}
       </main>
 
-      {/* Footer */}
-      <Footer lang={lang} />
+      {/* Global Footer */}
+      <Footer lang={lang} onPageChange={handlePageChange} />
 
       {/* Enrollment Trial Pass Modal */}
       <EnrollmentModal
@@ -131,3 +180,4 @@ export default function App() {
     </div>
   );
 }
+

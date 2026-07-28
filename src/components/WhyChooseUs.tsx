@@ -1,143 +1,171 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Language } from '../types';
-import { Shield, GraduationCap, Award, Globe, Users, Trophy, HeartHandshake, Compass, Cpu } from 'lucide-react';
+import { ArrowUpRight, Check, ShieldCheck, Trophy, Sparkles } from 'lucide-react';
 
 interface WhyChooseUsProps {
   lang: Language;
+  onOpenEnrollment?: () => void;
 }
 
-export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ lang }) => {
-  const features = [
-    {
-      title: { en: "CAF Certified Coaches", fr: "Entraîneurs Certifiés CAF " },
-      desc: {
-        en: "Our technical staff holds top international coaching licenses with decades of professional youth experience.",
-        fr: "Notre staff technique possède des licences internationales et des dizaines d'années d'expérience."
-      },
-      icon: Award
-    },
-    {
-      title: { en: "Modern Football Training", fr: "Entraînement Moderne" },
-      desc: {
-        en: "High-intensity drills focused on spatial scanning, 1v1 dominance, quick decision making, and ball speed.",
-        fr: "Exercices haute intensité axés sur la prise d'information, le 1v1, les choix rapides et la vitesse de balle."
-      },
-      icon: Cpu
-    },
-    {
-      title: { en: "FIFA-Level Methodology", fr: "Méthodologie Norme FIFA" },
-      desc: {
-        en: "Structured periodization ensuring youth players reach peak athletic form without risk of burnout.",
-        fr: "Périodisation structurée garantissant le pic de forme sans risque de surmenage."
-      },
-      icon: Compass
-    },
-    {
-      title: { en: "Education & Academic Support", fr: "Suivi Scolaire & Éducation" },
-      desc: {
-        en: "Mandatory school monitoring. Sporting excellence goes hand in hand with top classroom performance.",
-        fr: "Suivi scolaire obligatoire. L'excellence sportive va de pair avec les résultats à l'école."
-      },
-      icon: GraduationCap
-    },
-    {
-      title: { en: "Rigorous Discipline & Values", fr: "Discipline & Valeurs" },
-      desc: {
-        en: "Punctuality, respect, fraternity, and patriotism form the unshakeable foundation of every TFC athlete.",
-        fr: "Ponctualité, respect, fraternité et patriotisme constituent le socle de nos athlètes."
-      },
-      icon: Shield
-    },
-    {
-      title: { en: "Leadership & Mentorship", fr: "Leadership & Mentorat" },
-      desc: {
-        en: "Building strong personalities capable of leading teams, handling match pressure, and inspiring society.",
-        fr: "Former des personnalités fortes capables de guider l'équipe et de résister à la pression."
-      },
-      icon: Users
-    },
-    {
-      title: { en: "Player Development Pathway", fr: "Parcours de Progression" },
-      desc: {
-        en: "Individual player tracking with quarterly performance benchmarks, video breakdown, and heatmaps.",
-        fr: "Suivi individuel avec évaluations trimestrielles, analyses vidéo et cartes thermiques."
-      },
-      icon: Trophy
-    },
-    {
-      title: { en: "International Opportunities", fr: "Opportunités Internationales" },
-      desc: {
-        en: "Direct showcase events with scouts from African, European, and Middle Eastern professional clubs.",
-        fr: "Journées de détection en présence de recruteurs africains et européens."
-      },
-      icon: Globe
-    },
-    {
-      title: { en: "Safe & Inspiring Environment", fr: "Environnement Sûr & Inspirant" },
-      desc: {
-        en: "Fully enclosed complex in Bamako with medical staff, hydration stations, and dedicated player safety.",
-        fr: "Complexe sécurisé à Bamako avec présence médicale, hydratation et sécurité optimale."
-      },
-      icon: HeartHandshake
-    }
-  ];
-
+export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ lang, onOpenEnrollment }) => {
   return (
-    <section id="why-us" className="py-24 bg-[#F5F7FA] relative overflow-hidden">
+    <section id="why-us" className="py-20 sm:py-28 bg-[#F8FAFC] border-b border-slate-200/80 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1E4E92] text-white text-xs font-bold uppercase tracking-widest mb-4">
-            <Trophy className="w-4 h-4 text-[#DCEBFF]" />
-            <span>{lang === 'en' ? 'The Tandem Advantage' : 'L\'Avantage Tandem'}</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight">
-            {lang === 'en' ? 'Why Choose TANDEM FOOT CLUB?' : 'Pourquoi Choisir Le TANDEM FOOT CLUB ?'}
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-gray-600">
-            {lang === 'en'
-              ? 'We don’t just train football players; we shape tomorrow’s leaders, champions, and role models.'
-              : 'Nous ne formons pas seulement des footballeurs ; nous façonnons les leaders et champions de demain.'}
-          </p>
+        {/* Top Eyebrow Badge (Green Dot Style) */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 text-slate-800 text-xs font-bold shadow-xs mb-6">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#22C55E] animate-pulse" />
+          <span>{lang === 'fr' ? 'Communauté & Valeurs' : 'Community & Values'}</span>
         </div>
 
-        {/* 9 Feature Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feat, idx) => {
-            const IconComponent = feat.icon;
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="p-8 rounded-3xl bg-white border border-gray-200 shadow-sm hover:border-[#1E4E92] shadow-card-hover group relative overflow-hidden"
-              >
-                {/* Top Accent Stripe */}
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#153E75] to-[#1E4E92] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* Split Section Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12">
+          <div className="lg:col-span-7">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight leading-[1.1]">
+              {lang === 'fr' 
+                ? 'Connecter les Talents au Véritable Esprit du Football' 
+                : 'Connecting You with the True Spirit of Youth Football'}
+            </h2>
+          </div>
+          <div className="lg:col-span-5">
+            <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
+              {lang === 'fr'
+                ? 'Nous rassemblons les jeunes passionnés de tous niveaux, des espoirs prometteurs aux athlètes d’élite. Profitez d’un encadrement expert, de ressources d\'excellence et d\'une communauté florissante.'
+                : 'We bring together young football enthusiasts of all levels, from emerging talents to seasoned prospects. Explore expert guidance, premium resources, and a thriving academy community.'}
+            </p>
+          </div>
+        </div>
 
-                {/* Icon Box */}
-                <div className="w-14 h-14 rounded-2xl bg-[#DCEBFF] text-[#1E4E92] flex items-center justify-center mb-6 group-hover:bg-[#1E4E92] group-hover:text-white transition-colors duration-300 shadow-sm">
-                  <IconComponent className="w-7 h-7" />
-                </div>
+        {/* Bento Grid Cards Layout Matching Reference Image 1 */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          
+          {/* LEFT BENTO CARD (Tall Image Card with Bullets & Pill Button) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-7 relative rounded-[2.5rem] overflow-hidden min-h-[500px] sm:min-h-[560px] flex flex-col justify-end p-8 sm:p-12 border border-slate-200/90 shadow-xl group"
+          >
+            {/* Background Image */}
+            <img
+              src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=1200"
+              alt="Tandem Football Training"
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              referrerPolicy="no-referrer"
+            />
+            {/* Dark Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-slate-900/10" />
 
-                {/* Title */}
-                <h3 className="text-xl font-bold text-[#153E75] font-heading mb-3 group-hover:text-[#1E4E92] transition-colors">
-                  {feat.title[lang]}
+            {/* Card Bottom Content */}
+            <div className="relative z-10 space-y-6">
+              <h3 className="text-2xl sm:text-4xl font-extrabold text-white font-heading tracking-tight">
+                {lang === 'fr' ? 'Le Football pour Tous les Jeunes' : 'Football for Everyone'}
+              </h3>
+
+              {/* Bullet Points with Green Circles */}
+              <ul className="space-y-3.5 text-xs sm:text-sm text-slate-200 font-medium max-w-xl">
+                <li className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#22C55E] flex items-center justify-center text-white flex-shrink-0 mt-0.5 shadow-sm">
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                  </div>
+                  <span>
+                    <strong className="text-white font-bold">{lang === 'fr' ? 'Apprendre des Meilleurs' : 'Learn from the Best'}</strong> – {lang === 'fr' ? 'Accédez aux conseils tactiques et techniques des coachs certifiés CAF.' : 'Access expert insights, tactical drills, and football tips.'}
+                  </span>
+                </li>
+
+                <li className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#22C55E] flex items-center justify-center text-white flex-shrink-0 mt-0.5 shadow-sm">
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                  </div>
+                  <span>
+                    <strong className="text-white font-bold">{lang === 'fr' ? 'Connecter avec les Recruteurs' : 'Connect with Scouts'}</strong> – {lang === 'fr' ? 'Rejoignez un réseau actif reliant Bamako aux clubs pros d\'Afrique et d\'Europe.' : 'Join a vibrant community of players and international scouts.'}
+                  </span>
+                </li>
+
+                <li className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#22C55E] flex items-center justify-center text-white flex-shrink-0 mt-0.5 shadow-sm">
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                  </div>
+                  <span>
+                    <strong className="text-white font-bold">{lang === 'fr' ? 'Jouer avec Confiance' : 'Play with Confidence'}</strong> – {lang === 'fr' ? 'Profitez de terrains aux normes et d\'un suivi biométrique professionnel.' : 'Find high-quality pitches and dedicated support near you.'}
+                  </span>
+                </li>
+              </ul>
+
+              {/* Action Pill Button */}
+              <div className="pt-2">
+                <button
+                  onClick={onOpenEnrollment}
+                  className="bg-white/20 hover:bg-white/30 border border-white/30 backdrop-blur-md text-white font-bold text-xs sm:text-sm pl-6 pr-2 py-2 rounded-full inline-flex items-center gap-3 transition-all cursor-pointer active:scale-95 group/btn shadow-lg"
+                >
+                  <span>{lang === 'fr' ? 'Rejoindre L\'Académie' : 'Get Started Now'}</span>
+                  <div className="w-9 h-9 rounded-full bg-[#22C55E] text-white flex items-center justify-center group-hover/btn:scale-105 transition-transform shadow-md">
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
+                </button>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* RIGHT BENTO CARD (Top Image with Floating Website Pill + Bottom Content Card) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-5 flex flex-col gap-6"
+          >
+            {/* Top Image Box with URL Floating Pill */}
+            <div className="relative rounded-[2rem] overflow-hidden h-64 sm:h-72 border border-slate-200/90 shadow-md group">
+              <img
+                src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=800"
+                alt="Aerial Stadium View"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+
+              {/* Floating Pill Tag at Bottom Right */}
+              <div className="absolute bottom-4 right-4 bg-slate-900/80 hover:bg-slate-900 text-white backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-xs font-bold inline-flex items-center gap-2 shadow-lg transition-colors">
+                <span>www.tandemfootclub.com</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#22C55E]" />
+              </div>
+            </div>
+
+            {/* Bottom Content Card */}
+            <div className="bg-white rounded-[2rem] p-8 sm:p-10 border border-slate-200/90 shadow-md flex-1 flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[#153E75] font-heading tracking-tight leading-tight">
+                  {lang === 'fr' 
+                    ? 'Rejoignez Une Académie Passionnée' 
+                    : 'Join a Passionate Football Community'}
                 </h3>
 
-                {/* Description */}
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {feat.desc[lang]}
+                <p className="text-sm text-slate-600 font-medium leading-relaxed">
+                  {lang === 'fr'
+                    ? 'Développez vos compétences aux côtés d\'autres jeunes footballeurs passionnés qui partagent vos ambitions. Élevez votre niveau grâce à un encadrement individualisé, des stages intensifs et des opportunités uniques.'
+                    : 'Network with other players who share your passion and improve your game through shared experiences, exclusive showcase matches, and expert advice.'}
                 </p>
-              </motion.div>
-            );
-          })}
+              </div>
+
+              {/* Link CTA */}
+              <div className="pt-2">
+                <button
+                  onClick={onOpenEnrollment}
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-extrabold text-[#153E75] hover:text-[#2563EB] cursor-pointer group/link transition-colors underline decoration-2 underline-offset-4"
+                >
+                  <span>{lang === 'fr' ? 'Postuler Aux Détections' : 'Join Now'}</span>
+                  <ArrowUpRight className="w-4 h-4 text-[#22C55E] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
   );
 };
+

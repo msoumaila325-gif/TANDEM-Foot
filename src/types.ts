@@ -1,5 +1,7 @@
 export type Language = 'en' | 'fr';
 
+export type PageRoute = 'home' | 'academie' | 'scouting' | 'programmes' | 'media' | 'contact';
+
 export interface Program {
   id: string;
   title: Record<Language, string>;
@@ -86,4 +88,67 @@ export interface AcademyStats {
   matchesPlayed: number;
   championships: number;
   proGraduates: number;
+}
+
+export interface Player {
+  id: string;
+  name: string;
+  number: number;
+  category: 'U15' | 'U17' | 'U20' | 'Seniors';
+  position: 'Gardien' | 'Défenseur' | 'Milieu' | 'Attaquant';
+  positionEn: 'Goalkeeper' | 'Defender' | 'Midfielder' | 'Forward';
+  secondaryPosition?: Record<Language, string>;
+  image: string;
+  age: number;
+  height: string;
+  weight: string;
+  preferredFoot: 'Droit' | 'Gauche' | 'Ambidextre';
+  preferredFootEn: 'Right' | 'Left' | 'Ambidextrous';
+  nationality: string;
+  flag: string;
+  marketRating: number; // Overall FIFA style rating
+  overallPotential: number; // Potential rating
+  videoUrl?: string; // YouTube / HUDL highlight
+  stats: {
+    matchesPlayed: number;
+    goals: number;
+    assists: number;
+    minutesPlayed: number;
+    cleanSheets?: number;
+    passAccuracy?: string;
+    tacklesWon?: number;
+  };
+  skills: {
+    speed: number;
+    technique: number;
+    dribbling: number;
+    passing: number;
+    physicality: number;
+    tacticalIQ: number;
+  };
+  bio: Record<Language, string>;
+  scoutNotes: Record<Language, string>;
+  featured?: boolean;
+}
+
+export interface MatchResult {
+  id: string;
+  competition: Record<Language, string>;
+  date: string;
+  homeTeam: { name: string; score: number; logo?: string };
+  awayTeam: { name: string; score: number; logo?: string };
+  isTandemHome: boolean;
+  venue: string;
+  status: 'Finished' | 'Upcoming';
+  highlightsUrl?: string;
+  scorers?: string[];
+}
+
+export interface SponsorshipPackage {
+  id: string;
+  tier: 'Title' | 'Gold' | 'Official' | 'Technical';
+  title: Record<Language, string>;
+  benefits: Record<Language, string[]>;
+  investment: string;
+  badgeColor: string;
 }

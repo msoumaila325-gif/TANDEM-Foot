@@ -194,19 +194,19 @@ export const Logo: React.FC<LogoProps> = ({
         <div className="flex flex-col">
           <div className="flex items-center gap-1.5">
             <span
-              className={`font-extrabold tracking-tight font-heading leading-none ${dim.font} ${
+              className={`font-bold tracking-tight font-heading leading-none ${dim.font} ${
                 lightText ? 'text-white' : 'text-[#153E75]'
               }`}
             >
               TANDEM
             </span>
-            <span className="font-extrabold tracking-tight font-heading leading-none text-[#2563EB] text-opacity-95">
+            <span className="font-bold tracking-tight font-heading leading-none text-[#2563EB] text-opacity-95">
               FOOTBALL
             </span>
           </div>
           <div className="flex items-center justify-between gap-1 mt-0.5">
             <span
-              className={`font-extrabold tracking-[0.25em] uppercase ${dim.subFont} ${
+              className={`font-semibold tracking-[0.22em] uppercase ${dim.subFont} ${
                 lightText ? 'text-[#DCEBFF]/90' : 'text-[#1E4E92]'
               }`}
             >

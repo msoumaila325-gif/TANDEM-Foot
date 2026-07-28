@@ -1,4 +1,4 @@
-import { AgeCategory, Coach, Facility, FAQItem, NewsArticle, Program, Testimonial } from '../types';
+import { AgeCategory, Coach, Facility, FAQItem, NewsArticle, Program, Testimonial, Player, MatchResult, SponsorshipPackage } from '../types';
 
 export const ACADEMY_INFO = {
   name: "TANDEM FOOT CLUB",
@@ -488,6 +488,30 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     },
     rating: 5,
     category: "partner"
+  },
+  {
+    id: "test-4",
+    name: "Fatoumata Coulibaly",
+    role: { en: "Mother of U13 Goalkeeper", fr: "Mère de Gardien U13" },
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop",
+    quote: {
+      en: "The academic tracking and personal care given by coach staff is what makes Tandem unique. My son's self-confidence and grades have improved significantly.",
+      fr: "Le suivi scolaire et l'accompagnement personnalisé du staff rendent Tandem unique. La confiance en soi et les résultats scolaires de mon fils ont énormément progressé."
+    },
+    rating: 5,
+    category: "parent"
+  },
+  {
+    id: "test-5",
+    name: "Moussa Keïta",
+    role: { en: "Former U20 Captain & Scholar", fr: "Ancien Capitaine U20 & Boursier" },
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&auto=format&fit=crop",
+    quote: {
+      en: "Tandem Foot Club gave me the tactical roots and athletic mindset needed to earn my sports scholarship. Forever grateful for the coaches in N'Tabacoro.",
+      fr: "Tandem Foot Club m'a transmis la rigueur tactique et l'esprit athlétique nécessaires pour obtenir ma bourse sportive. Reconnaissant à jamais envers les coachs de N'Tabacoro."
+    },
+    rating: 5,
+    category: "player"
   }
 ];
 
@@ -625,3 +649,461 @@ export const GALLERY_IMAGES = [
   { id: "g7", url: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1000&auto=format&fit=crop", title: { en: "Video Strategy Room", fr: "Salle de Stratégie Vidéo" }, category: "Facilities" },
   { id: "g8", url: "https://images.unsplash.com/photo-1517649763962-0c623266010b?q=80&w=1000&auto=format&fit=crop", title: { en: "Team Huddle Spirit", fr: "Union & Esprit d'Équipe" }, category: "Matches" }
 ];
+
+export const PLAYERS_DATA: Player[] = [
+  {
+    id: "ply-1",
+    name: "Ibrahim 'Ibro' Coulibaly",
+    number: 10,
+    category: "U17",
+    position: "Milieu",
+    positionEn: "Midfielder",
+    secondaryPosition: { en: "Attacking Midfielder / Playmaker", fr: "Milieu Offensif / Meneur de Jeu" },
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+    age: 16,
+    height: "1m78",
+    weight: "69 kg",
+    preferredFoot: "Droit",
+    preferredFootEn: "Right",
+    nationality: "Mali",
+    flag: "🇲🇱",
+    marketRating: 88,
+    overallPotential: 94,
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    stats: {
+      matchesPlayed: 18,
+      goals: 12,
+      assists: 14,
+      minutesPlayed: 1520,
+      passAccuracy: "89%"
+    },
+    skills: {
+      speed: 86,
+      technique: 92,
+      dribbling: 94,
+      passing: 90,
+      physicality: 78,
+      tacticalIQ: 91
+    },
+    bio: {
+      en: "Exceptional vision and silky first touch. Ibrahim commands the tempo of the game with elite spatial awareness and lethal key passes.",
+      fr: "Vision du jeu exceptionnelle et premier contrôle de velours. Ibrahim dicte le tempo du match avec une prise d'information instantanée et des passes décisives mortelles."
+    },
+    scoutNotes: {
+      en: "High European potential. Similar profile to Bernardo Silva & Luka Modrić. Exceptional press-resistance under tight pressure.",
+      fr: "Potentiel européen très élevé. Profil similaire à Bernardo Silva & Luka Modrić. Résistance au pressing impressionnante dans les petits espaces."
+    },
+    featured: true
+  },
+  {
+    id: "ply-2",
+    name: "Mamadou 'Tigre' Traoré",
+    number: 9,
+    category: "U20",
+    position: "Attaquant",
+    positionEn: "Forward",
+    secondaryPosition: { en: "Center Forward / Striker", fr: "Avant-Centre de Rupture" },
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
+    age: 19,
+    height: "1m86",
+    weight: "77 kg",
+    preferredFoot: "Ambidextre",
+    preferredFootEn: "Ambidextrous",
+    nationality: "Mali",
+    flag: "🇲🇱",
+    marketRating: 91,
+    overallPotential: 96,
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    stats: {
+      matchesPlayed: 22,
+      goals: 21,
+      assists: 7,
+      minutesPlayed: 1890,
+      passAccuracy: "81%"
+    },
+    skills: {
+      speed: 94,
+      technique: 88,
+      dribbling: 87,
+      passing: 80,
+      physicality: 92,
+      tacticalIQ: 89
+    },
+    bio: {
+      en: "Clinical finisher with explosive acceleration and aerial dominance. Unstoppable in 1v1 situations inside the box.",
+      fr: "Buteur clinique doté d'une accélération foudroyante et d'une grande puissance aérienne. Inarrêtable en 1v1 dans la surface de réparation."
+    },
+    scoutNotes: {
+      en: "Ready for immediate pro transition. High goal-to-minute ratio. Excellent aerial jump and box positioning.",
+      fr: "Prêt pour une transition pro immédiate. Ratio buts/minutes exceptionnel. Qualité de détente et d'appel en profondeur remarquables."
+    },
+    featured: true
+  },
+  {
+    id: "ply-3",
+    name: "Ousmane 'Roc' Diakité",
+    number: 4,
+    category: "U20",
+    position: "Défenseur",
+    positionEn: "Defender",
+    secondaryPosition: { en: "Central Defender / Stopper", fr: "Défenseur Central / Stoppeur" },
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
+    age: 18,
+    height: "1m89",
+    weight: "81 kg",
+    preferredFoot: "Droit",
+    preferredFootEn: "Right",
+    nationality: "Mali",
+    flag: "🇲🇱",
+    marketRating: 87,
+    overallPotential: 93,
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    stats: {
+      matchesPlayed: 20,
+      goals: 3,
+      assists: 2,
+      minutesPlayed: 1800,
+      cleanSheets: 11,
+      tacklesWon: 68
+    },
+    skills: {
+      speed: 84,
+      technique: 81,
+      dribbling: 75,
+      passing: 86,
+      physicality: 95,
+      tacticalIQ: 90
+    },
+    bio: {
+      en: "Commanding central defender. Master of aerial duels with precise diagonal long ball distribution out of the back.",
+      fr: "Défenseur central autoritaire. Maître des duels aériens avec une relance longue diagonale d'une précision chirurgicale."
+    },
+    scoutNotes: {
+      en: "Strong leadership and vocal organization. Modern ball-playing center back profile suited for high pressing defensive lines.",
+      fr: "Fort leadership et organisation vocale. Profil de défenseur relanceur moderne idéal pour les lignes de défense hautes."
+    },
+    featured: true
+  },
+  {
+    id: "ply-4",
+    name: "Cheick 'Rempart' Keita",
+    number: 1,
+    category: "U17",
+    position: "Gardien",
+    positionEn: "Goalkeeper",
+    secondaryPosition: { en: "Sweeper Keeper", fr: "Gardien Volant / Libéro" },
+    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop",
+    age: 17,
+    height: "1m91",
+    weight: "82 kg",
+    preferredFoot: "Droit",
+    preferredFootEn: "Right",
+    nationality: "Mali",
+    flag: "🇲🇱",
+    marketRating: 86,
+    overallPotential: 92,
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    stats: {
+      matchesPlayed: 16,
+      goals: 0,
+      assists: 1,
+      minutesPlayed: 1440,
+      cleanSheets: 9,
+      passAccuracy: "88%"
+    },
+    skills: {
+      speed: 80,
+      technique: 85,
+      dribbling: 70,
+      passing: 88,
+      physicality: 89,
+      tacticalIQ: 92
+    },
+    bio: {
+      en: "Agile, vocal sweeper keeper with extraordinary reflexes on line shots and confident foot distribution under pressure.",
+      fr: "Gardien volant très agile aux réflexes impressionnants sur la ligne, excellent relanceur au pied sous pression."
+    },
+    scoutNotes: {
+      en: "Elite distribution range with both feet. Calm composure when pressed by opposition forwards.",
+      fr: "Jeu au pied haut de gamme des deux pieds. Calme absolu sous le pressing adverse."
+    },
+    featured: false
+  },
+  {
+    id: "ply-5",
+    name: "Bakary 'Eclair' Sissoko",
+    number: 7,
+    category: "U15",
+    position: "Attaquant",
+    positionEn: "Forward",
+    secondaryPosition: { en: "Winger (Left & Right)", fr: "Ailier Dribbleur (Gauche / Droit)" },
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop",
+    age: 14,
+    height: "1m72",
+    weight: "62 kg",
+    preferredFoot: "Gauche",
+    preferredFootEn: "Left",
+    nationality: "Mali",
+    flag: "🇲🇱",
+    marketRating: 84,
+    overallPotential: 95,
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    stats: {
+      matchesPlayed: 15,
+      goals: 14,
+      assists: 11,
+      minutesPlayed: 1200,
+      passAccuracy: "84%"
+    },
+    skills: {
+      speed: 96,
+      technique: 90,
+      dribbling: 95,
+      passing: 83,
+      physicality: 72,
+      tacticalIQ: 85
+    },
+    bio: {
+      en: "Prodigious left-footed winger with blistering pace and sudden direction change. Devastating in open field transitions.",
+      fr: "Ailier gaucher prodigieux doté d'une pointe de vitesse phénoménale et de changements de direction foudroyants."
+    },
+    scoutNotes: {
+      en: "Raw elite talent in U15 category. Exceptional 1v1 dribbling stats. Top prospect for academy development.",
+      fr: "Pépite brute en catégorie U15. Statistiques de dribble en 1v1 hors normes. Prospect prioritaire."
+    },
+    featured: true
+  },
+  {
+    id: "ply-6",
+    name: "Seydou 'Metronome' Touré",
+    number: 6,
+    category: "Seniors",
+    position: "Milieu",
+    positionEn: "Midfielder",
+    secondaryPosition: { en: "Defensive Midfielder / Anchor", fr: "Milieu Défensif / Sentinelle" },
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop",
+    age: 21,
+    height: "1m83",
+    weight: "76 kg",
+    preferredFoot: "Droit",
+    preferredFootEn: "Right",
+    nationality: "Mali",
+    flag: "🇲🇱",
+    marketRating: 89,
+    overallPotential: 92,
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    stats: {
+      matchesPlayed: 24,
+      goals: 4,
+      assists: 9,
+      minutesPlayed: 2160,
+      passAccuracy: "92%",
+      tacklesWon: 82
+    },
+    skills: {
+      speed: 82,
+      technique: 88,
+      dribbling: 82,
+      passing: 93,
+      physicality: 90,
+      tacticalIQ: 95
+    },
+    bio: {
+      en: "Tactical anchor with high interception volume and 92%+ pass accuracy across the season.",
+      fr: "Sentinelle tactique avec un volume d'interceptions massif et une précision de passe supérieure à 92%."
+    },
+    scoutNotes: {
+      en: "Mature tactical discipline. Excellent ball recovery and transitional switching play.",
+      fr: "Maturité tactique remarquable. Récupération propre et jeu de transition fluide."
+    },
+    featured: false
+  },
+  {
+    id: "ply-7",
+    name: "Lamine 'Piston' Camara",
+    number: 2,
+    category: "U17",
+    position: "Défenseur",
+    positionEn: "Defender",
+    secondaryPosition: { en: "Right Fullback / Wingback", fr: "Arrière Droit / Piston" },
+    image: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=800&auto=format&fit=crop",
+    age: 16,
+    height: "1m76",
+    weight: "68 kg",
+    preferredFoot: "Droit",
+    preferredFootEn: "Right",
+    nationality: "Mali",
+    flag: "🇲🇱",
+    marketRating: 85,
+    overallPotential: 91,
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    stats: {
+      matchesPlayed: 17,
+      goals: 2,
+      assists: 8,
+      minutesPlayed: 1420,
+      tacklesWon: 54
+    },
+    skills: {
+      speed: 92,
+      technique: 84,
+      dribbling: 83,
+      passing: 85,
+      physicality: 82,
+      tacticalIQ: 86
+    },
+    bio: {
+      en: "Relentless stamina down the right flank with pin-point crossing precision and high recovery speed.",
+      fr: "Endurance inépuisable sur le couloir droit, centres brossés d'une grande précision et repli défensif rapide."
+    },
+    scoutNotes: {
+      en: "Modern wingback profile capable of overlapping and contributing heavily in final third crosses.",
+      fr: "Profil moderne de piston capable d'apporter le surnombre offensif et de centrer dans la course."
+    },
+    featured: false
+  },
+  {
+    id: "ply-8",
+    name: "Moussa 'Aigle' Koné",
+    number: 11,
+    category: "U20",
+    position: "Attaquant",
+    positionEn: "Forward",
+    secondaryPosition: { en: "Left Winger / Inside Forward", fr: "Ailier Gauche / Attaquant Intérieur" },
+    image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=800&auto=format&fit=crop",
+    age: 18,
+    height: "1m80",
+    weight: "73 kg",
+    preferredFoot: "Droit",
+    preferredFootEn: "Right",
+    nationality: "Mali",
+    flag: "🇲🇱",
+    marketRating: 87,
+    overallPotential: 93,
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    stats: {
+      matchesPlayed: 19,
+      goals: 15,
+      assists: 8,
+      minutesPlayed: 1610,
+      passAccuracy: "83%"
+    },
+    skills: {
+      speed: 93,
+      technique: 89,
+      dribbling: 91,
+      passing: 82,
+      physicality: 84,
+      tacticalIQ: 87
+    },
+    bio: {
+      en: "Explosive cutting-inside left winger. Deadly curling shots from outside the box into the top corner.",
+      fr: "Ailier gauche explosif aimant repiquer dans l'axe. Frappe en enroulé dévastatrice dans la lucarne opposée."
+    },
+    scoutNotes: {
+      en: "Lethal shooting mechanics. High goal contribution per 90 minutes.",
+      fr: "Mécanique de frappe mortelle. Ratio de contribution aux buts très élevé par match."
+    },
+    featured: true
+  }
+];
+
+export const MATCHES_DATA: MatchResult[] = [
+  {
+    id: "match-1",
+    competition: { en: "Mali Regional U20 League - Grand Final", fr: "Ligue Régionale U20 Mali - Grande Finale" },
+    date: "24 Juillet 2026",
+    homeTeam: { name: "TANDEM FOOT CLUB U20", score: 3 },
+    awayTeam: { name: "AS Real Bamako U20", score: 1 },
+    isTandemHome: true,
+    venue: "Stade Municipal N'Tabacoro",
+    status: "Finished",
+    scorers: ["M. Traoré (14', 68')", "I. Coulibaly (82')"],
+    highlightsUrl: "https://youtube.com"
+  },
+  {
+    id: "match-2",
+    competition: { en: "West African Youth Showcase", fr: "Tournoi des Académies d'Afrique de l'Ouest" },
+    date: "12 Juillet 2026",
+    homeTeam: { name: "Stade Malien U17", score: 0 },
+    awayTeam: { name: "TANDEM FOOT CLUB U17", score: 2 },
+    isTandemHome: false,
+    venue: "Stade Modibo Keïta, Bamako",
+    status: "Finished",
+    scorers: ["B. Sissoko (34')", "M. Koné (79')"],
+    highlightsUrl: "https://youtube.com"
+  },
+  {
+    id: "match-3",
+    competition: { en: "International Scout Showcase Match", fr: "Match d'Exhibition Détection Internationale" },
+    date: "15 Août 2026",
+    homeTeam: { name: "TANDEM FOOT CLUB Elite", score: 0 },
+    awayTeam: { name: "Sélection Académies Pro", score: 0 },
+    isTandemHome: true,
+    venue: "Terrain Synthétique N'Tabacoro",
+    status: "Upcoming"
+  }
+];
+
+export const SPONSORSHIP_DATA: SponsorshipPackage[] = [
+  {
+    id: "sp-1",
+    tier: "Title",
+    title: { en: "Main Academy Naming & Front-Jersey Partner", fr: "Sponsor Principal & Maillot Officiel" },
+    benefits: {
+      en: [
+        "Official Front-of-Jersey logo placement across all U11-Seniors squads",
+        "Stadium Naming Rights & priority perimeter LED advertising",
+        "Exclusive digital media integration across video highlights and player cards",
+        "First-look VIP access to official international trial showcases"
+      ],
+      fr: [
+        "Emplacement logo principal face avant maillot sur toutes les équipes (U11 à Seniors)",
+        "Dénomination officielle du complexe & visibilité panneau LED terrain",
+        "Intégration digitale exclusive sur toutes les vidéos highlights et fiches joueurs",
+        "Accès VIP prioritaire aux journées de détection internationale"
+      ]
+    },
+    investment: "Sur Demande",
+    badgeColor: "bg-amber-400 text-black border-amber-300"
+  },
+  {
+    id: "sp-2",
+    tier: "Gold",
+    title: { en: "Official Training & Equipment Partner", fr: "Partenaire Équipement & Entraînement" },
+    benefits: {
+      en: [
+        "Sleeve & Back-of-Jersey logo placement on official kits",
+        "Branded training gear & academy travel uniforms",
+        "Banners & backdrop presence during press conferences and interviews"
+      ],
+      fr: [
+        "Emplacement logo manche et dos sur maillots de compétition",
+        "Visibilité sur tenues d'entraînement et survêtements officiels",
+        "Présence sur bâches et panoplies de presse lors des communiqués"
+      ]
+    },
+    investment: "Sur Demande",
+    badgeColor: "bg-blue-500 text-white border-blue-400"
+  },
+  {
+    id: "sp-[#sp-3]",
+    tier: "Technical",
+    title: { en: "Academic, Medical & Nutritional Partner", fr: "Partenaire Médical & Performance" },
+    benefits: {
+      en: [
+        "Branding inside Physiotherapy Unit & Tactical Strategy Room",
+        "Academic scholarship sponsorship named after partner brand",
+        "Social media co-branding for Player of the Month awards"
+      ],
+      fr: [
+        "Visibilité au Pôle Médical & Salle d'Analyse Tactique",
+        "Parrainage de bourses d'études sport-études au nom de la marque",
+        "Co-branding sur les trophées 'Joueur du Mois' sur les réseaux sociaux"
+      ]
+    },
+    investment: "Sur Demande",
+    badgeColor: "bg-emerald-500 text-white border-emerald-400"
+  }
+];
+

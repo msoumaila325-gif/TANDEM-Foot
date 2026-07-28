@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import { Logo } from './Logo';
-import { Language } from '../types';
+import { Language, PageRoute } from '../types';
 import { ACADEMY_INFO } from '../data/academyData';
 import { MapPin, Phone, Mail, Send, CheckCircle, Instagram, Facebook, Globe, Shield, Heart } from 'lucide-react';
 
 interface FooterProps {
   lang: Language;
+  onPageChange?: (page: PageRoute) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ lang }) => {
+export const Footer: React.FC<FooterProps> = ({ lang, onPageChange }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+
+  const handlePageClick = (e: React.MouseEvent, page: PageRoute) => {
+    e.preventDefault();
+    if (onPageChange) {
+      onPageChange(page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const handleNewsletter = (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,11 +62,11 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
               {lang === 'en' ? 'Quick Links' : 'Navigation'}
             </h4>
             <ul className="space-y-2.5 text-sm text-[#DCEBFF]/80">
-              <li><a href="#about" className="hover:text-white transition-colors">{lang === 'en' ? 'About TFC' : 'À Propos'}</a></li>
-              <li><a href="#why-us" className="hover:text-white transition-colors">{lang === 'en' ? 'Why Choose Us' : 'Pourquoi TFC'}</a></li>
-              <li><a href="#categories" className="hover:text-white transition-colors">{lang === 'en' ? 'Age Categories (U11-U20)' : 'Catégories (U11-U20)'}</a></li>
-              <li><a href="#staff" className="hover:text-white transition-colors">{lang === 'en' ? 'Coaching Staff' : 'Staff Technique'}</a></li>
-              <li><a href="#facilities" className="hover:text-white transition-colors">{lang === 'en' ? 'Facilities' : 'Infrastructures'}</a></li>
+              <li><a href="#about" onClick={(e) => handlePageClick(e, 'academie')} className="hover:text-white transition-colors">{lang === 'en' ? 'About TFC' : 'L\'Académie'}</a></li>
+              <li><a href="#scouting" onClick={(e) => handlePageClick(e, 'scouting')} className="hover:text-white transition-colors">{lang === 'en' ? 'Talents & Scouting' : 'Scouting & Talents'}</a></li>
+              <li><a href="#programs" onClick={(e) => handlePageClick(e, 'programmes')} className="hover:text-white transition-colors">{lang === 'en' ? 'Programs' : 'Programmes'}</a></li>
+              <li><a href="#media" onClick={(e) => handlePageClick(e, 'media')} className="hover:text-white transition-colors">{lang === 'en' ? 'Media & News' : 'Médias & Actus'}</a></li>
+              <li><a href="#contact" onClick={(e) => handlePageClick(e, 'contact')} className="hover:text-white transition-colors">{lang === 'en' ? 'Contact & Admissions' : 'Contact & Inscriptions'}</a></li>
             </ul>
           </div>
 
@@ -67,11 +76,11 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
               {lang === 'en' ? 'Programs' : 'Programmes'}
             </h4>
             <ul className="space-y-2.5 text-sm text-[#DCEBFF]/80">
-              <li><a href="#programs" className="hover:text-white transition-colors">{lang === 'en' ? 'Technical Mastery' : 'Maîtrise Technique'}</a></li>
-              <li><a href="#programs" className="hover:text-white transition-colors">{lang === 'en' ? 'Tactical Intelligence' : 'Intelligence Tactique'}</a></li>
-              <li><a href="#programs" className="hover:text-white transition-colors">{lang === 'en' ? 'Goalkeeper Unit' : 'Académie Gardiens'}</a></li>
-              <li><a href="#programs" className="hover:text-white transition-colors">{lang === 'en' ? 'Athletic Prep' : 'Préparation Physique'}</a></li>
-              <li><a href="#programs" className="hover:text-white transition-colors">{lang === 'en' ? 'Video Analysis' : 'Analyse Vidéo'}</a></li>
+              <li><a href="#programs" onClick={(e) => handlePageClick(e, 'programmes')} className="hover:text-white transition-colors">{lang === 'en' ? 'Technical Mastery' : 'Maîtrise Technique'}</a></li>
+              <li><a href="#programs" onClick={(e) => handlePageClick(e, 'programmes')} className="hover:text-white transition-colors">{lang === 'en' ? 'Tactical Intelligence' : 'Intelligence Tactique'}</a></li>
+              <li><a href="#programs" onClick={(e) => handlePageClick(e, 'programmes')} className="hover:text-white transition-colors">{lang === 'en' ? 'Goalkeeper Unit' : 'Académie Gardiens'}</a></li>
+              <li><a href="#programs" onClick={(e) => handlePageClick(e, 'programmes')} className="hover:text-white transition-colors">{lang === 'en' ? 'Athletic Prep' : 'Préparation Physique'}</a></li>
+              <li><a href="#programs" onClick={(e) => handlePageClick(e, 'programmes')} className="hover:text-white transition-colors">{lang === 'en' ? 'Video Analysis' : 'Analyse Vidéo'}</a></li>
             </ul>
           </div>
 
