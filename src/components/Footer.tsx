@@ -63,7 +63,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, onPageChange }) => {
             </h4>
             <ul className="space-y-2.5 text-sm text-[#DCEBFF]/80">
               <li><a href="#about" onClick={(e) => handlePageClick(e, 'academie')} className="hover:text-white transition-colors">{lang === 'en' ? 'About TFC' : 'L\'Académie'}</a></li>
-              <li><a href="#scouting" onClick={(e) => handlePageClick(e, 'scouting')} className="hover:text-white transition-colors">{lang === 'en' ? 'Talents & Scouting' : 'Scouting & Talents'}</a></li>
+              <li><a href="#equipes" onClick={(e) => handlePageClick(e, 'equipes')} className="hover:text-white transition-colors">{lang === 'en' ? 'Our Teams' : 'Nos Équipes'}</a></li>
               <li><a href="#programs" onClick={(e) => handlePageClick(e, 'programmes')} className="hover:text-white transition-colors">{lang === 'en' ? 'Programs' : 'Programmes'}</a></li>
               <li><a href="#media" onClick={(e) => handlePageClick(e, 'media')} className="hover:text-white transition-colors">{lang === 'en' ? 'Media & News' : 'Médias & Actus'}</a></li>
               <li><a href="#contact" onClick={(e) => handlePageClick(e, 'contact')} className="hover:text-white transition-colors">{lang === 'en' ? 'Contact & Admissions' : 'Contact & Inscriptions'}</a></li>

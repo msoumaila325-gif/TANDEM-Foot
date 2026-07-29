@@ -18,7 +18,7 @@ import { SponsorsTicker } from './components/SponsorsTicker';
 import { FAQSection } from './components/FAQSection';
 import { ContactSection } from './components/ContactSection';
 import { EnrollmentModal } from './components/EnrollmentModal';
-import { ScoutingHub } from './components/ScoutingHub';
+import { EquipesHub } from './components/EquipesHub';
 import { PartnershipsSection } from './components/PartnershipsSection';
 import { AcademyBentoSections } from './components/AcademyBentoSections';
 import { Footer } from './components/Footer';
@@ -99,19 +99,18 @@ export default function App() {
           </>
         )}
 
-        {currentPage === 'scouting' && (
+        {currentPage === 'equipes' && (
           <>
             <PageHeader
-              page="scouting"
+              page="equipes"
               lang={lang}
               onPageChange={handlePageChange}
               onOpenEnrollment={() => setEnrollmentOpen(true)}
             />
-            <ScoutingHub
+            <EquipesHub
               lang={lang}
               onOpenEnrollment={() => setEnrollmentOpen(true)}
             />
-            <PartnershipsSection lang={lang} />
           </>
         )}
 

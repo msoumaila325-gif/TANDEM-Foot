@@ -1,6 +1,6 @@
 export type Language = 'en' | 'fr';
 
-export type PageRoute = 'home' | 'academie' | 'scouting' | 'programmes' | 'media' | 'contact';
+export type PageRoute = 'home' | 'academie' | 'equipes' | 'programmes' | 'media' | 'contact';
 
 export interface Program {
   id: string;

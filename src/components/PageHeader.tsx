@@ -29,16 +29,16 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           bgImage: imgWa0057,
           buttonText: lang === 'en' ? 'Start your own journey' : 'Commencer l\'Aventure',
         };
-      case 'scouting':
+      case 'equipes':
         return {
           title: lang === 'en' 
-            ? 'Discover Mali\'s Next Football Legends. All In One Hub.' 
-            : 'Découvrez Les Pépites Du Football Malien. Prêtes Pour L\'Élite.',
+            ? 'Our Teams & Official Partnerships. Excellence In Action.' 
+            : 'Nos Équipes & Partenariats Officiels. L\'Excellence En Action.',
           subtitle: lang === 'en'
-            ? 'Access biometric player profiles, tactical radars, match highlights, and verified scouting statistics from U11 to U20 categories.'
-            : 'Accédez aux fiches biométriques, radars tactiques, résumés de matchs et statistiques certifiées de nos talents U11 à U20.',
+            ? 'Explore our youth and senior training categories (U11 to Senior), download our 2026 Sponsorship Deck, and partner with Bamako\'s premier football academy.'
+            : 'Découvrez nos catégories d\'équipes de la préformation au pôle Senior (U11 à Senior), téléchargez le dossier de sponsoring 2026 et devenez partenaire.',
           bgImage: imgWa0071,
-          buttonText: lang === 'en' ? 'Explore Elite Players' : 'Explorer nos Pépites',
+          buttonText: lang === 'en' ? 'Download Sponsorship Deck' : 'Dossier de Sponsoring 2026',
         };
       case 'programmes':
         return {

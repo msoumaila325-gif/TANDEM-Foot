@@ -44,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks: { id: PageRoute; label: string }[] = [
     { id: 'home', label: lang === 'en' ? 'Home' : 'Accueil' },
     { id: 'academie', label: lang === 'en' ? 'Academy' : 'Académie' },
-    { id: 'scouting', label: 'Scouting' },
+    { id: 'equipes', label: lang === 'en' ? 'Teams' : 'Nos Équipes' },
     { id: 'programmes', label: lang === 'en' ? 'Programs' : 'Programmes' },
     { id: 'media', label: lang === 'en' ? 'Media' : 'Médias' },
     { id: 'contact', label: 'Contact' },
@@ -121,8 +121,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Calendar Icon Button */}
           <button
-            onClick={() => handleNavClick('scouting')}
-            title={lang === 'en' ? 'Match Schedule & Scouting' : 'Calendrier & Scouting'}
+            onClick={() => handleNavClick('equipes')}
+            title={lang === 'en' ? 'Our Teams & Sponsoring' : 'Nos Équipes & Partenariats'}
             className="w-9 h-9 rounded-full bg-slate-100/90 hover:bg-slate-200/90 border border-gray-200/60 flex items-center justify-center text-[#2563EB] transition-colors cursor-pointer flex-shrink-0 whitespace-nowrap"
           >
             <Calendar className="w-4 h-4" />
