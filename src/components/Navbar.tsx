@@ -143,8 +143,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="sm:hidden fixed inset-x-4 top-20 bg-white/98 backdrop-blur-2xl rounded-3xl border border-gray-200 shadow-2xl p-6 z-50 flex flex-col gap-4">
-          <nav className="flex flex-col gap-2">
+        <div className="sm:hidden fixed inset-x-3 sm:inset-x-4 top-20 max-h-[82vh] overflow-y-auto bg-white/98 backdrop-blur-2xl rounded-3xl border border-gray-200 shadow-2xl p-5 z-50 flex flex-col gap-4">
+          <nav className="flex flex-col gap-1.5">
             {navLinks.map((link) => {
               const isActive = currentPage === link.id;
               return (

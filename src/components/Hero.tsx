@@ -141,7 +141,7 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section className="relative w-full h-[90vh] sm:h-[95vh] min-h-[750px] lg:min-h-[850px] max-h-[1050px] bg-[#050B14] text-white overflow-hidden select-none">
+    <section className="relative w-full h-[85vh] sm:h-[90vh] min-h-[600px] sm:min-h-[720px] lg:min-h-[820px] max-h-[1000px] bg-[#050B14] text-white overflow-hidden select-none">
       {/* Background Slides Stack */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -216,7 +216,7 @@ export const Hero: React.FC<HeroProps> = ({
                 </div>
 
                 {/* Main Display Headline with pro premium typography style */}
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-[1.08] font-heading max-w-4xl drop-shadow-2xl">
+                <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-[1.12] font-heading max-w-4xl drop-shadow-2xl">
                   {lang === 'fr' ? slides[currentSlide].title.fr : slides[currentSlide].title.en}
                 </h1>
 
