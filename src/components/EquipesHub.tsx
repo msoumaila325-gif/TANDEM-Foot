@@ -408,7 +408,7 @@ Téléchargez la version complète sur https://tandemfootclub.ml`;
                 className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white border border-white/25 font-extrabold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer backdrop-blur-md"
               >
                 <Download className="w-4 h-4 text-[#60A5FA]" />
-                <span>{lang === 'en' ? 'Download Club Presentation' : 'Télécharger la Broche du Club'}</span>
+                <span>{lang === 'en' ? 'Download Membership Brochure' : 'Télécharger la Brochure d\'Adhésion'}</span>
               </motion.button>
             </div>
           </div>
