@@ -14,7 +14,13 @@ export const CoachingStaff: React.FC<CoachingStaffProps> = ({ lang }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Corporate Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-14"
+        >
           <h2 className="text-2xl sm:text-4xl font-extrabold text-[#153E75] font-heading tracking-tight">
             {lang === 'en' ? 'Technical Leadership & Coaching Staff' : 'Encadrement & Staff Technique'}
           </h2>
@@ -24,18 +30,19 @@ export const CoachingStaff: React.FC<CoachingStaffProps> = ({ lang }) => {
               ? 'A dedicated team of CAF certified professionals combining tactical analysis, athletic preparation, and youth football development in Bamako.'
               : 'Une équipe d\'éducateurs diplômés CAF spécialisés en préparation physique, analyse tactique et accompagnement des jeunes.'}
           </p>
-        </div>
+        </motion.div>
 
         {/* Corporate Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {COACHES_DATA.map((coach, idx) => (
             <motion.div
               key={coach.id}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              whileHover={{ y: -8, scale: 1.02 }}
               transition={{ duration: 0.35, delay: idx * 0.08 }}
-              className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
+              className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
                 {/* Image Frame */}

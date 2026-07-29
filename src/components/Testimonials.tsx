@@ -30,22 +30,29 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ lang }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
+        >
           <h2 className="text-2xl sm:text-4xl font-extrabold text-[#153E75] font-heading tracking-tight">
             {lang === 'en' ? 'What People Say' : 'Ce Que Disent Nos Familles & Partenaires'}
           </h2>
-        </div>
+        </motion.div>
 
         {/* 3 Cards on 1 Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {testimonials.map((item, idx) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              whileHover={{ y: -6, scale: 1.02 }}
               transition={{ duration: 0.35, delay: idx * 0.1 }}
-              className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between"
+              className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-[#2563EB]/40 transition-all duration-300 flex flex-col justify-between"
             >
               <div className="space-y-3.5">
                 {/* Rating Stars */}

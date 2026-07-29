@@ -67,7 +67,13 @@ export const Facilities: React.FC<FacilitiesProps> = ({ lang, onOpenEnrollment }
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Split Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12"
+        >
           <div className="lg:col-span-7">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight leading-[1.1]">
               {lang === 'fr' 
@@ -82,7 +88,7 @@ export const Facilities: React.FC<FacilitiesProps> = ({ lang, onOpenEnrollment }
                 : 'At Tandem Foot Club, we offer top-tier facilities designed to elevate your footballing journey. Whether you are an emerging talent or a confirmed athlete, our complex ensures world-class development.'}
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* 3 Rounded Cards Grid Matching Reference Image 2 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
@@ -128,13 +134,15 @@ export const Facilities: React.FC<FacilitiesProps> = ({ lang, onOpenEnrollment }
                 >
                   {lang === 'fr' ? 'Voir détails' : 'Learn more'}
                 </button>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.15, rotate: 12 }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={() => setSelectedFacility(fac as any)}
                   aria-label={fac.title[lang]}
-                  className="w-10 h-10 rounded-full bg-[#22C55E] hover:bg-emerald-600 text-white flex items-center justify-center transition-all cursor-pointer shadow-md group-hover:scale-110 active:scale-95"
+                  className="w-10 h-10 rounded-full bg-[#22C55E] hover:bg-emerald-600 text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
                 >
                   <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
-                </button>
+                </motion.button>
               </div>
             </motion.div>
           ))}

@@ -63,19 +63,20 @@ export const StatsCounter: React.FC<StatsProps> = ({ lang }) => {
           {statsList.map((st, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
-              className="flex flex-col items-center justify-center space-y-2"
+              whileHover={{ y: -6, scale: 1.05 }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              className="flex flex-col items-center justify-center space-y-2 p-3 rounded-2xl transition-colors hover:bg-slate-50/80 cursor-default group"
             >
               {/* Big Minimalist Number */}
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-light font-heading text-slate-900 tracking-tight leading-none">
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-light font-heading text-slate-900 group-hover:text-[#2563EB] tracking-tight leading-none transition-colors">
                 <CounterNumber value={st.val} />
               </div>
 
               {/* Muted Subtitle Label */}
-              <div className="text-xs sm:text-sm text-slate-500 font-medium max-w-[140px] leading-snug">
+              <div className="text-xs sm:text-sm text-slate-500 font-medium max-w-[140px] leading-snug group-hover:text-slate-800 transition-colors">
                 {st.label[lang]}
               </div>
             </motion.div>

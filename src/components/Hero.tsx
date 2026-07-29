@@ -166,9 +166,31 @@ export const Hero: React.FC<HeroProps> = ({
         </motion.div>
       </AnimatePresence>
 
-      {/* Decorative Royal Blue / Electric Glow Effects */}
-      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#2563EB]/20 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#1D4ED8]/30 rounded-full blur-[130px] pointer-events-none" />
+      {/* Decorative Royal Blue / Electric Glow Effects with floating physics */}
+      <motion.div 
+        animate={{ y: [0, -20, 0], scale: [1, 1.08, 1], opacity: [0.25, 0.4, 0.25] }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-[#2563EB]/25 rounded-full blur-[150px] pointer-events-none" 
+      />
+      <motion.div 
+        animate={{ y: [0, 20, 0], scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#1D4ED8]/35 rounded-full blur-[130px] pointer-events-none" 
+      />
+
+      {/* Floating Animated Academy Badge Top Right */}
+      <motion.div 
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="absolute top-28 right-6 sm:right-12 z-20 hidden md:flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 text-white shadow-xl"
+      >
+        <span className="relative flex h-2.5 w-2.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22C55E] opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#22C55E]"></span>
+        </span>
+        <span className="text-xs font-bold tracking-wider uppercase font-mono">BAMAKO • N'TABACORO</span>
+      </motion.div>
 
       {/* MAIN HERO CONTENT CONTAINER */}
       <div className="relative z-10 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-end pt-32 sm:pt-40 pb-16 sm:pb-20">
@@ -205,15 +227,17 @@ export const Hero: React.FC<HeroProps> = ({
 
                 {/* Rounded Pill Action Button */}
                 <div className="pt-3 flex flex-wrap items-center gap-4">
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.96 }}
                     onClick={() => handleCtaClick(slides[currentSlide].ctaAction)}
-                    className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs sm:text-sm pl-6 pr-2 py-2 rounded-full flex items-center gap-3 transition-all duration-200 shadow-xl cursor-pointer active:scale-95 group"
+                    className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs sm:text-sm pl-6 pr-2 py-2 rounded-full flex items-center gap-3 transition-colors shadow-xl cursor-pointer group"
                   >
                     <span>{lang === 'fr' ? slides[currentSlide].ctaText.fr : slides[currentSlide].ctaText.en}</span>
-                    <div className="w-9 h-9 rounded-full bg-white/20 text-white flex items-center justify-center group-hover:scale-105 transition-transform shadow-md">
+                    <div className="w-9 h-9 rounded-full bg-white/20 text-white flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-transform shadow-md">
                       <ArrowUpRight className="w-4 h-4" />
                     </div>
-                  </button>
+                  </motion.button>
                 </div>
               </motion.div>
             </AnimatePresence>

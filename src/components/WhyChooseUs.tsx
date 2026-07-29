@@ -15,7 +15,13 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ lang, onOpenEnrollment
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Split Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12"
+        >
           <div className="lg:col-span-7">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight leading-[1.1]">
               {lang === 'fr' 
@@ -30,7 +36,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ lang, onOpenEnrollment
                 : 'From U11 to U20, we train young players in Bamako. Targeted sessions, individual progress tracking, and purpose-built pitch facilities in N\'Tabacoro.'}
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bento Grid Cards Layout Matching Reference Image 1 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">

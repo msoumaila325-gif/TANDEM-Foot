@@ -42,7 +42,13 @@ export const AboutSection: React.FC<AboutProps> = ({ lang }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Split Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12"
+        >
           <div className="lg:col-span-7">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight leading-[1.1]">
               {lang === 'en' ? 'Building The Future Of Malian Football' : 'Construire L\'Avenir Du Football Malien'}
@@ -55,7 +61,7 @@ export const AboutSection: React.FC<AboutProps> = ({ lang }) => {
                 : 'Fondé le 12 Août 2024 à Bamako, le TANDEM FOOT CLUB allie la méthodologie de pointe à la passion locale pour former les futurs champions du football.'}
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Two Column Layout: Left Interactive Tabs & Content, Right Visual Gallery */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -225,14 +231,20 @@ export const AboutSection: React.FC<AboutProps> = ({ lang }) => {
           </div>
 
           {/* Right Column: Visual Frame with Badge (5 Cols) */}
-          <div className="lg:col-span-5 relative">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-5 relative"
+          >
             <div className="relative mx-auto max-w-md lg:max-w-none">
               {/* Main Image Frame */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white group">
                 <img
                   src={imgWa0073}
                   alt="Tandem Foot Club Player in Action"
-                  className="w-full h-[480px] object-cover hover:scale-105 transition-transform duration-700"
+                  className="w-full h-[480px] object-cover group-hover:scale-108 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#153E75]/80 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
@@ -245,9 +257,13 @@ export const AboutSection: React.FC<AboutProps> = ({ lang }) => {
                 </div>
               </div>
 
-              {/* Floating Highlight Card */}
-              <div className="absolute -bottom-6 -left-6 bg-[#153E75] text-white p-5 rounded-2xl shadow-xl border border-white/20 max-w-xs hidden sm:flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#1E4E92] flex items-center justify-center font-extrabold text-xl text-white font-heading">
+              {/* Floating Highlight Card with spring animation */}
+              <motion.div 
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-6 -left-6 bg-[#153E75] text-white p-5 rounded-2xl shadow-2xl border border-white/20 max-w-xs hidden sm:flex items-center gap-4"
+              >
+                <div className="w-12 h-12 rounded-xl bg-[#1E4E92] flex items-center justify-center font-extrabold text-xl text-white font-heading shadow-md">
                   100%
                 </div>
                 <div>
@@ -258,9 +274,9 @@ export const AboutSection: React.FC<AboutProps> = ({ lang }) => {
                     {lang === 'en' ? 'CAF Certified Standards' : 'Normes Certifiées CAF'}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

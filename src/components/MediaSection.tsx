@@ -144,9 +144,10 @@ export const MediaSection: React.FC<MediaSectionProps> = ({
                   layout
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
+                  whileHover={{ y: -6, scale: 1.02 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3 }}
-                  className="group relative rounded-3xl overflow-hidden h-80 sm:h-88 shadow-sm hover:shadow-xl border border-slate-200 bg-slate-100"
+                  className="group relative rounded-3xl overflow-hidden h-80 sm:h-88 shadow-sm hover:shadow-2xl border border-slate-200 bg-slate-100 cursor-pointer"
                 >
                   <img
                     src={img.url}
@@ -212,9 +213,10 @@ export const MediaSection: React.FC<MediaSectionProps> = ({
               key={art.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -8, scale: 1.02 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+              className="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group cursor-pointer"
             >
               <div>
                 <div className="relative h-60 overflow-hidden bg-slate-100">
