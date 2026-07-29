@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Language } from '../types';
+import { imgWa0071, pexelsChris, pexelsArafat, imgWa0057 } from '../image';
 import {
   ChevronRight,
   ChevronLeft,
@@ -57,7 +58,7 @@ export const Hero: React.FC<HeroProps> = ({
       },
       ctaText: { en: 'Match Report & Highlights', fr: 'Rapport de Match & Résumé' },
       ctaAction: 'video',
-      image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop',
+      image: imgWa0071,
       badge: 'RÉSULTAT OFFICIEL',
       date: '24 Juillet 2026'
     },
@@ -74,7 +75,7 @@ export const Hero: React.FC<HeroProps> = ({
       },
       ctaText: { en: 'View Player Scout Card', fr: 'Consulter la Fiche Joueur' },
       ctaAction: 'squad',
-      image: 'https://images.unsplash.com/photo-1517649763962-0c623266010b?q=80&w=1920&auto=format&fit=crop',
+      image: pexelsChris,
       badge: 'SCOUT REPORT',
       date: 'Saison 2025-2026'
     },
@@ -82,8 +83,8 @@ export const Hero: React.FC<HeroProps> = ({
       id: 2,
       category: { en: 'OFFICIAL ACADEMY TRYOUTS 2026', fr: 'JOURNÉES DE DÉTECTION OFFICIELLES 2026' },
       title: {
-        en: 'Join The Elite: Open Tryouts Registration for Season 2026-2027',
-        fr: 'Rejoignez L\'Élite : Inscriptions Ouvertes Pour la Rentrée 2026'
+        en: 'Tryouts & Enrollment Open for Season 2026-2027',
+        fr: 'Inscriptions et Détections Ouvertes - Rentrée 2026-2027'
       },
       subtitle: {
         en: 'Categories U11, U13, U15, U17 & U20. Professional athletic & academic sport-study program.',
@@ -91,7 +92,7 @@ export const Hero: React.FC<HeroProps> = ({
       },
       ctaText: { en: 'Book Trial Pass Now', fr: 'Réserver un Pass Détection' },
       ctaAction: 'enroll',
-      image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1920&auto=format&fit=crop',
+      image: pexelsArafat,
       badge: 'INSCRIPTIONS OUVERTES',
       date: 'Prochaine Session à Bamako'
     },
@@ -99,8 +100,8 @@ export const Hero: React.FC<HeroProps> = ({
       id: 3,
       category: { en: 'WORLD-CLASS FACILITIES', fr: 'INFRASTRUCTURES ET ÉQUIPEMENTS' },
       title: {
-        en: 'FIFA-Standard Synthetic Pitch & High-Performance Fitness Hub',
-        fr: 'Terrain Synthétique Normes FIFA & Centre de Récupération Médicale'
+        en: 'FIFA-Standard Turf Pitch & High-Performance Fitness Hub',
+        fr: 'Terrain Synthétique & Centre de Récupération Médicale'
       },
       subtitle: {
         en: 'Empowering athletes with modern video strategy rooms and physical conditioning centers.',
@@ -108,8 +109,8 @@ export const Hero: React.FC<HeroProps> = ({
       },
       ctaText: { en: 'Explore Academy Programs', fr: 'Découvrir nos Programmes' },
       ctaAction: 'programs',
-      image: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1920&auto=format&fit=crop',
-      badge: 'CENTRE D\'ÉLITE',
+      image: imgWa0057,
+      badge: 'COMPLEXE SPORTIF',
       date: 'Complexe N\'Tabacoro'
     }
   ];
@@ -202,26 +203,16 @@ export const Hero: React.FC<HeroProps> = ({
                   {lang === 'fr' ? slides[currentSlide].subtitle.fr : slides[currentSlide].subtitle.en}
                 </p>
 
-                {/* Rounded Pill Action Buttons matching reference image */}
+                {/* Rounded Pill Action Button */}
                 <div className="pt-3 flex flex-wrap items-center gap-4">
-                  {/* White Pill Button with Green Circle Arrow */}
-                  <button
-                    onClick={onOpenEnrollment}
-                    className="bg-white hover:bg-slate-100 text-slate-900 font-bold text-xs sm:text-sm pl-6 pr-2 py-2 rounded-full flex items-center gap-3 transition-all duration-200 shadow-xl cursor-pointer active:scale-95 group"
-                  >
-                    <span>{lang === 'fr' ? 'Inscriptions' : 'Registration'}</span>
-                    <div className="w-9 h-9 rounded-full bg-[#22C55E] text-white flex items-center justify-center group-hover:scale-105 transition-transform shadow-md">
-                      <ArrowUpRight className="w-4 h-4" />
-                    </div>
-                  </button>
-
-                  {/* Translucent Glass Pill Button with Arrow */}
                   <button
                     onClick={() => handleCtaClick(slides[currentSlide].ctaAction)}
-                    className="bg-white/15 hover:bg-white/25 border border-white/30 backdrop-blur-md text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full flex items-center gap-2.5 transition-all cursor-pointer active:scale-95 group"
+                    className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs sm:text-sm pl-6 pr-2 py-2 rounded-full flex items-center gap-3 transition-all duration-200 shadow-xl cursor-pointer active:scale-95 group"
                   >
                     <span>{lang === 'fr' ? slides[currentSlide].ctaText.fr : slides[currentSlide].ctaText.en}</span>
-                    <ArrowUpRight className="w-4 h-4 text-white/80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <div className="w-9 h-9 rounded-full bg-white/20 text-white flex items-center justify-center group-hover:scale-105 transition-transform shadow-md">
+                      <ArrowUpRight className="w-4 h-4" />
+                    </div>
                   </button>
                 </div>
               </motion.div>

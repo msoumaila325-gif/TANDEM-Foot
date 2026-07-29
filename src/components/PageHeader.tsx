@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageRoute, Language } from '../types';
 import { ArrowUpRight } from 'lucide-react';
+import { imgWa0057, imgWa0071, imgWa0073, imgWa1630, pexelsArafat } from '../image';
 
 interface PageHeaderProps {
   page: PageRoute;
@@ -25,7 +26,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           subtitle: lang === 'en'
             ? 'Join the ultimate football experience in Bamako — where passion meets performance, and every training brings you closer to victory.'
             : 'Rejoignez l\'expérience footballistique ultime à Bamako — où la passion rencontre la performance, et chaque entraînement vous rapproche de la victoire.',
-          bgImage: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop',
+          bgImage: imgWa0057,
           buttonText: lang === 'en' ? 'Start your own journey' : 'Commencer l\'Aventure',
         };
       case 'scouting':
@@ -36,7 +37,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           subtitle: lang === 'en'
             ? 'Access biometric player profiles, tactical radars, match highlights, and verified scouting statistics from U11 to U20 categories.'
             : 'Accédez aux fiches biométriques, radars tactiques, résumés de matchs et statistiques certifiées de nos talents U11 à U20.',
-          bgImage: 'https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?q=80&w=1920&auto=format&fit=crop',
+          bgImage: imgWa0071,
           buttonText: lang === 'en' ? 'Explore Elite Players' : 'Explorer nos Pépites',
         };
       case 'programmes':
@@ -47,7 +48,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           subtitle: lang === 'en'
             ? 'Master technical agility, tactical intelligence, athletic preparation, and goalkeeper specialization under certified UEFA & CAF standards.'
             : 'Maîtrisez la technique, l\'intelligence tactique, la préparation physique et le jeu de gardien selon les standards FIFA & CAF.',
-          bgImage: 'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=1920&auto=format&fit=crop',
+          bgImage: imgWa0073,
           buttonText: lang === 'en' ? 'Join a Program' : 'Inscrire un Jeune Joueur',
         };
       case 'media':
@@ -58,7 +59,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           subtitle: lang === 'en'
             ? 'Follow match action, tournament highlights, press releases, and photo coverage live from our N\'Tabacoro complex in Bamako.'
             : 'Suivez les résumés de matchs, les résultats de tournois, les communiqués officiels et les reportages photo du complexe de N\'Tabacoro.',
-          bgImage: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1920&auto=format&fit=crop',
+          bgImage: imgWa1630,
           buttonText: lang === 'en' ? 'Browse Gallery' : 'Consulter la Galerie',
         };
       case 'contact':
@@ -69,14 +70,14 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           subtitle: lang === 'en'
             ? 'Get in touch with our technical staff, register for trial passes, or visit our state-of-the-art facilities in N\'Tabacoro.'
             : 'Prenez contact avec notre staff technique, demandez votre pass de détection ou visitez nos installations à N\'Tabacoro.',
-          bgImage: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1920&auto=format&fit=crop',
+          bgImage: pexelsArafat,
           buttonText: lang === 'en' ? 'Get Trial Pass' : 'Obtenir un Pass Détection',
         };
       default:
         return {
           title: 'Unleash Your Inner Champion Today. All In One Place.',
           subtitle: 'Join the ultimate football experience in Bamako.',
-          bgImage: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop',
+          bgImage: imgWa0057,
           buttonText: 'Start your own journey',
         };
     }

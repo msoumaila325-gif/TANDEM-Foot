@@ -35,17 +35,13 @@ export const TrainingPrograms: React.FC<TrainingProgramsProps> = ({
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCEBFF] text-[#1E4E92] text-xs font-bold uppercase tracking-widest mb-4">
-            <Zap className="w-4 h-4 text-[#1E4E92]" />
-            <span>{lang === 'en' ? 'Pro Training Curriculum' : 'Programme d\'Entraînement Pro'}</span>
-          </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight">
-            {lang === 'en' ? 'Elite Development Pillars' : 'Les Piliers De Formation D\'Élite'}
+            {lang === 'en' ? 'Core Training Modules' : 'Axes de Formation Technique & Tactique'}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-gray-600">
             {lang === 'en'
-              ? 'Our UEFA-aligned training framework combines technical perfection, tactical IQ, physical power, and mental resilience.'
-              : 'Notre programme delite associe perfection technique, QI tactique, puissance physique et mental d’acier.'}
+              ? 'Our training framework combines ball mastery, tactical awareness, physical preparation, and mental focus.'
+              : 'Notre cursus combine maîtrise technique, apprentissage tactique, préparation physique et suivi disciplinaire.'}
           </p>
         </div>
 

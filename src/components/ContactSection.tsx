@@ -30,12 +30,6 @@ export const ContactSection: React.FC<ContactProps> = ({ lang }) => {
     <section id="contact" className="py-20 sm:py-28 bg-white relative overflow-hidden border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Eyebrow Badge (Green Dot Style) */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F8FAFC] border border-slate-200 text-slate-800 text-xs font-bold shadow-xs mb-6">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#22C55E] animate-pulse" />
-          <span>{lang === 'en' ? 'Contact & Admission' : 'Contact & Admissions'}</span>
-        </div>
-
         {/* Split Section Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12">
           <div className="lg:col-span-7">

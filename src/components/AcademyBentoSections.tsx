@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Language } from '../types';
+import { imgWa0057, pexelsPavan, imgWa1526_30, imgWa0071, imgWa0043 } from '../image';
 import { ArrowUpRight, ArrowLeft, ArrowRight, Zap, Trophy, ShieldCheck, Users, CheckCircle2, SlidersHorizontal } from 'lucide-react';
 
 interface AcademyBentoProps {
@@ -19,7 +20,7 @@ export const AcademyBentoSections: React.FC<AcademyBentoProps> = ({ lang, onOpen
     {
       title: lang === 'en' ? 'FIFA Standard Pitch Access' : 'Accès Terrains Homologués FIFA',
       tag: lang === 'en' ? 'Pitch Access' : 'Accès aux Terrains',
-      image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop',
+      image: imgWa0057,
       desc: lang === 'en'
         ? 'Step into a space built for players — to grow, compete, and thrive with night lighting.'
         : 'Entrez dans un espace conçu pour les joueurs — pour grandir, rivaliser et s\'épanouir avec éclairage nocturne.',
@@ -27,7 +28,7 @@ export const AcademyBentoSections: React.FC<AcademyBentoProps> = ({ lang, onOpen
     {
       title: lang === 'en' ? 'Athletic Performance Gym' : 'Salle de Préparation Physique',
       tag: lang === 'en' ? 'High Performance' : 'Haute Performance',
-      image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop',
+      image: pexelsPavan,
       desc: lang === 'en'
         ? 'Modern athletic equipment tailored for young football speed, agility, and injury prevention.'
         : 'Équipements athlétiques modernes adaptés à l\'explosivité, l\'agilité et la prévention des blessures.',
@@ -35,7 +36,7 @@ export const AcademyBentoSections: React.FC<AcademyBentoProps> = ({ lang, onOpen
     {
       title: lang === 'en' ? 'Tactical Video Room' : 'Centre d\'Analyse Vidéo',
       tag: lang === 'en' ? 'Tactical Intelligence' : 'Intelligence Tactique',
-      image: 'https://images.unsplash.com/photo-1517649763962-0c623266010b?q=80&w=800&auto=format&fit=crop',
+      image: imgWa1526_30,
       desc: lang === 'en'
         ? 'High-definition match breakdowns to accelerate tactical decision-making and positioning.'
         : 'Séances de débriefing vidéo HD pour accélérer la prise de décision et le placement tactique.',
@@ -59,20 +60,12 @@ export const AcademyBentoSections: React.FC<AcademyBentoProps> = ({ lang, onOpen
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Header Row (Corporate Refined) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start mb-10 sm:mb-14">
-          <div className="lg:col-span-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold tracking-wide">
-              <span>{lang === 'en' ? 'About Tandem FC' : 'À Propos du TFC'}</span>
-            </div>
-          </div>
-          
-          <div className="lg:col-span-9">
-            <h2 className="text-lg sm:text-2xl md:text-3xl font-semibold text-slate-900 font-heading leading-snug tracking-tight">
-              {lang === 'en'
-                ? 'At Tandem FC, we don\'t just play football — we live it. Since 2024, our academy has been a home for players of all levels, from eager beginners to seasoned pros.'
-                : 'Au Tandem Football Club, nous ne faisons pas que jouer au football — nous le vivons. Depuis 2024, notre académie est le foyer des jeunes talents de Bamako, des débutants passionnés aux futurs professionnels.'}
-            </h2>
-          </div>
+        <div className="mb-10 sm:mb-14">
+          <h2 className="text-lg sm:text-2xl md:text-3xl font-semibold text-slate-900 font-heading leading-snug tracking-tight max-w-4xl">
+            {lang === 'en'
+              ? 'At Tandem FC, we don\'t just play football — we live it. Since 2024, our academy has been a home for players of all levels, from eager beginners to seasoned pros.'
+              : 'Au Tandem Football Club, nous ne faisons pas que jouer au football — nous le vivons. Depuis 2024, notre académie est le foyer des jeunes talents de Bamako, des débutants passionnés aux futurs professionnels.'}
+          </h2>
         </div>
 
         {/* 3-Card Bento Grid */}
@@ -135,10 +128,9 @@ export const AcademyBentoSections: React.FC<AcademyBentoProps> = ({ lang, onOpen
             className="relative rounded-[2rem] overflow-hidden min-h-[380px] sm:min-h-[420px] flex items-center justify-center p-6 shadow-xl group border border-slate-200"
           >
             <img
-              src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?q=80&w=800&auto=format&fit=crop"
+              src={imgWa0071}
               alt="Coaching TFC"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-900/20 to-transparent" />
 
@@ -272,13 +264,9 @@ export const AcademyBentoSections: React.FC<AcademyBentoProps> = ({ lang, onOpen
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
-          {/* Left Side: Pill Badge + Corporate Description + Dark Pill Button */}
+          {/* Left Side: Corporate Description + Dark Pill Button */}
           <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
             <div className="space-y-5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold tracking-wide">
-                <span>{lang === 'en' ? 'Services & Programs' : 'Services & Cursus'}</span>
-              </div>
-
               <h3 className="text-base sm:text-xl font-semibold text-slate-900 font-heading leading-snug tracking-tight">
                 {lang === 'en'
                   ? 'Explore our full range of coaching, training, and football experiences. From first pass to match point — we\'ve got the right program for you.'
@@ -310,10 +298,9 @@ export const AcademyBentoSections: React.FC<AcademyBentoProps> = ({ lang, onOpen
               className="relative rounded-[2rem] overflow-hidden min-h-[420px] flex flex-col justify-between p-8 text-white shadow-xl group border border-slate-200"
             >
               <img
-                src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=800&auto=format&fit=crop"
+                src={imgWa0043}
                 alt="Training Programs"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-slate-900/10" />
 

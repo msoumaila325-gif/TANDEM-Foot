@@ -31,11 +31,6 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ lang }) => {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-100 text-[#153E75] text-xs font-bold uppercase tracking-wider mb-3">
-            <MessageSquareQuote className="w-3.5 h-3.5 text-[#2563EB]" />
-            <span>{lang === 'en' ? 'Testimonials' : 'Témoignages'}</span>
-          </div>
-
           <h2 className="text-2xl sm:text-4xl font-extrabold text-[#153E75] font-heading tracking-tight">
             {lang === 'en' ? 'What People Say' : 'Ce Que Disent Nos Familles & Partenaires'}
           </h2>
@@ -89,11 +84,6 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ lang }) => {
 
         {/* Newsletter CTA right below Testimonials */}
         <div className="mt-16 sm:mt-20 pt-12 border-t border-slate-200/80 max-w-3xl mx-auto text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 text-[#2563EB] text-xs font-bold uppercase tracking-wider">
-            <Mail className="w-3.5 h-3.5" />
-            <span>{lang === 'fr' ? 'RESTEZ INFORMÉ EN AVANT-PREMIÈRE' : 'STAY INFORMED IN REAL-TIME'}</span>
-          </div>
-
           <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#153E75]">
             {lang === 'fr' 
               ? 'Abonnez-vous à la Newsletter Officielle du TFC' 

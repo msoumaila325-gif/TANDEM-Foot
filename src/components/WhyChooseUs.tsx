@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Language } from '../types';
 import { ArrowUpRight, Check, ShieldCheck, Trophy, Sparkles } from 'lucide-react';
+import { imgWa1630, imgWa0057 } from '../image';
 
 interface WhyChooseUsProps {
   lang: Language;
@@ -13,26 +14,20 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ lang, onOpenEnrollment
     <section id="why-us" className="py-20 sm:py-28 bg-[#F8FAFC] border-b border-slate-200/80 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Eyebrow Badge (Green Dot Style) */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 text-slate-800 text-xs font-bold shadow-xs mb-6">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#22C55E] animate-pulse" />
-          <span>{lang === 'fr' ? 'Communauté & Valeurs' : 'Community & Values'}</span>
-        </div>
-
         {/* Split Section Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12">
           <div className="lg:col-span-7">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight leading-[1.1]">
               {lang === 'fr' 
-                ? 'Connecter les Talents au Véritable Esprit du Football' 
-                : 'Connecting You with the True Spirit of Youth Football'}
+                ? 'Un Cadre de Formation Structuré à Bamako' 
+                : 'A Structured Training Environment in Bamako'}
             </h2>
           </div>
           <div className="lg:col-span-5">
             <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
               {lang === 'fr'
-                ? 'Nous rassemblons les jeunes passionnés de tous niveaux, des espoirs prometteurs aux athlètes d’élite. Profitez d’un encadrement expert, de ressources d\'excellence et d\'une communauté florissante.'
-                : 'We bring together young football enthusiasts of all levels, from emerging talents to seasoned prospects. Explore expert guidance, premium resources, and a thriving academy community.'}
+                ? 'De U11 à U20, nous accueillons les jeunes joueurs pour développer leurs compétences techniques et tactiques. Entraînements ciblés, suivi individuel et infrastructures adaptées à N\'Tabacoro.'
+                : 'From U11 to U20, we train young players in Bamako. Targeted sessions, individual progress tracking, and purpose-built pitch facilities in N\'Tabacoro.'}
             </p>
           </div>
         </div>
@@ -50,10 +45,9 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ lang, onOpenEnrollment
           >
             {/* Background Image */}
             <img
-              src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=1200"
+              src={imgWa1630}
               alt="Tandem Football Training"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              referrerPolicy="no-referrer"
             />
             {/* Dark Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-slate-900/10" />
@@ -120,10 +114,9 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ lang, onOpenEnrollment
             {/* Top Image Box with URL Floating Pill */}
             <div className="relative rounded-[2rem] overflow-hidden h-64 sm:h-72 border border-slate-200/90 shadow-md group">
               <img
-                src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=800"
+                src={imgWa0057}
                 alt="Aerial Stadium View"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 

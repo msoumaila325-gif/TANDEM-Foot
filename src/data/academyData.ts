@@ -1,4 +1,18 @@
 import { AgeCategory, Coach, Facility, FAQItem, NewsArticle, Program, Testimonial, Player, MatchResult, SponsorshipPackage } from '../types';
+import {
+  imgWa0043,
+  imgWa0057,
+  imgWa0071,
+  imgWa0073,
+  imgWa1526_26,
+  imgWa1526_30,
+  imgWa1534,
+  imgWa1630,
+  pexelsArafat,
+  pexelsChris,
+  pexelsPavan,
+  img92cf
+} from '../image';
 
 export const ACADEMY_INFO = {
   name: "TANDEM FOOT CLUB",
@@ -56,11 +70,11 @@ export const ACADEMY_INFO = {
   ]
 };
 
-// Ultra-high resolution imagery curated for Champions League & Nike Football aesthetic
+// Ultra-high resolution imagery from local academy assets
 export const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920&auto=format&fit=crop", // Stadium under lights
-  "https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?q=80&w=1920&auto=format&fit=crop", // Young player control
-  "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1920&auto=format&fit=crop"  // Dramatic stadium floodlight
+  imgWa0071,
+  pexelsArafat,
+  imgWa0057
 ];
 
 export const PROGRAMS_DATA: Program[] = [
@@ -77,7 +91,7 @@ export const PROGRAMS_DATA: Program[] = [
       fr: "Conçu selon la méthodologie moderne FIFA & UEFA, notre programme de maîtrise technique garantit un contrôle parfait sous haute pression."
     },
     icon: "Zap",
-    image: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=800&auto=format&fit=crop",
+    image: imgWa0043,
     keyPoints: {
       en: ["360° Dribbling & Escapes", "Ambipodal Shooting Precision", "Tight Space Passing Windows", "Scanning & Spatial Awareness"],
       fr: ["Dribble 360° et Dégagements", "Précision de tir des deux pieds", "Passes dans espaces réduits", "Prise d'information & Vision"]
@@ -98,7 +112,7 @@ export const PROGRAMS_DATA: Program[] = [
       fr: "Les joueurs maîtrisent les phases de jeu grâce à des jeux réduits, des analyses vidéo sur tablette et du positionnement 11v11."
     },
     icon: "Compass",
-    image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
+    image: imgWa0073,
     keyPoints: {
       en: ["High Press & Gegenpressing", "Counter-Attack Transitions", "Defensive Line Coordination", "Set Piece Execution"],
       fr: ["Pressing Haut & Gegenpressing", "Transitions en Contre-Attaque", "Coordination de la Ligne Défensive", "Coup de Pied Arrêté"]
@@ -119,7 +133,7 @@ export const PROGRAMS_DATA: Program[] = [
       fr: "Développement athlétique scientifique personnalisé pour les adolescents en croissance afin de renforcer la puissance."
     },
     icon: "Activity",
-    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop",
+    image: pexelsPavan,
     keyPoints: {
       en: ["GPS Player Tracking Data", "Plyometrics & Vertical Leap", "Sprint Speed Mechanics", "Core & Balance Training"],
       fr: ["Données de Suivi GPS", "Pliométrie & Détente Verticale", "Mécanique de Sprint", "Renforcement de la Sangle Abdominale"]
@@ -140,7 +154,7 @@ export const PROGRAMS_DATA: Program[] = [
       fr: "Les gardiens sont de véritables relanceurs. Entraînement quotidien dédié avec équipement spécialisé."
     },
     icon: "ShieldCheck",
-    image: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=800&auto=format&fit=crop",
+    image: imgWa1534,
     keyPoints: {
       en: ["1v1 Reflex Reactions", "Distribution with Both Feet", "Cross Command & Communication", "Penalty Box Leadership"],
       fr: ["Réflexes en 1v1", "Relance au pied des deux pieds", "Gestion des centres", "Leadership dans la surface"]
@@ -161,7 +175,7 @@ export const PROGRAMS_DATA: Program[] = [
       fr: "Les champions se construisent dans la tête. Séances guidées pour transformer les défis en victoires."
     },
     icon: "Brain",
-    image: "https://images.unsplash.com/photo-1517649763962-0c623266010b?q=80&w=800&auto=format&fit=crop",
+    image: imgWa0071,
     keyPoints: {
       en: ["Performance Anxiety Reduction", "Goal Setting Mindset", "In-Match Communication", "Patriotic & Team Honor"],
       fr: ["Gestion du Stress de Match", "Fixation d'Objectifs", "Communication Terrain", "Esprit d'Équipe & Fierté"]
@@ -182,7 +196,7 @@ export const PROGRAMS_DATA: Program[] = [
       fr: "Les joueurs analysent leurs temps forts chaque semaine avec leurs entraîneurs pour accélérer leur apprentissage."
     },
     icon: "Video",
-    image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=800&auto=format&fit=crop",
+    image: imgWa1526_30,
     keyPoints: {
       en: ["HD Match Recording", "Individual Heatmaps", "Decision Making Clips", "Opponent Scouting Tactical Prep"],
       fr: ["Enregistrement Matchs HD", "Cartes Thermiques Individuelles", "Séquences Prise de Décision", "Analyse des Adversaires"]
@@ -203,7 +217,7 @@ export const PROGRAMS_DATA: Program[] = [
       fr: "Conseils nutritionnels adaptés aux jeunes athlètes pour soutenir une croissance optimale et l'endurance."
     },
     icon: "HeartPulse",
-    image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=800&auto=format&fit=crop",
+    image: imgWa1534,
     keyPoints: {
       en: ["Pre-Match Fueling", "Post-Training Muscle Repair", "Hydration Monitoring", "Ice Bath & Mobility Protocols"],
       fr: ["Alimentation d'Avant-Match", "Récupération Musculaire", "Monitoring d'Hydratation", "Bains Froides & Mobilité"]
@@ -224,7 +238,7 @@ export const PROGRAMS_DATA: Program[] = [
       fr: "Notre équipe médicale évalue chaque joueur chaque trimestre pour corriger les postures et éviter les blessures."
     },
     icon: "ShieldAlert",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop",
+    image: imgWa0057,
     keyPoints: {
       en: ["Functional Movement Screen", "Joint Mobility Exercises", "Soft Tissue Physiotherapy", "Rehabilitation Pathway"],
       fr: ["Test de Mouvement Fonctionnel", "Mobilité Articulaire", "Physiothérapie", "Protocole de Réathlétisation"]
@@ -253,7 +267,7 @@ export const AGE_CATEGORIES_DATA: AgeCategory[] = [
       en: ["Ball Control & Dribbling", "Eye-Foot Coordination", "Fair Play & Respect", "Small Sided 5v5 / 7v7 Games"],
       fr: ["Conduite & Dribble", "Coordination Œil-Pied", "Fair-Play & Respect", "Matchs Réduits 5v5 / 7v7"]
     },
-    image: "https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?q=80&w=800&auto=format&fit=crop"
+    image: imgWa0043
   },
   {
     id: "u13",
@@ -273,7 +287,7 @@ export const AGE_CATEGORIES_DATA: AgeCategory[] = [
       en: ["Two-Touch Speed Play", "Positioning 9v9 Layout", "Basic Tactical Concepts", "Discipline & Punctuality"],
       fr: ["Jeu Rapide à Deux Touches", "Organisation en 9v9", "Concepts Tactiques de Base", "Discipline & Ponctualité"]
     },
-    image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop"
+    image: imgWa0073
   },
   {
     id: "u15",
@@ -293,7 +307,7 @@ export const AGE_CATEGORIES_DATA: AgeCategory[] = [
       en: ["Full 11v11 Pitch Orientation", "High Pressing Tactics", "Strength & Acceleration", "Academic Progress Tracking"],
       fr: ["Tactique Grand Terrain 11v11", "Jeu sous Pression", "Force & Vitesse Explosive", "Suivi Scolaire Réguier"]
     },
-    image: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=800&auto=format&fit=crop"
+    image: imgWa0071
   },
   {
     id: "u17",
@@ -313,7 +327,7 @@ export const AGE_CATEGORIES_DATA: AgeCategory[] = [
       en: ["Championship Match Play", "Video Tactical Scouting", "Athletic Peak Performance", "Scouting Showcase Preparation"],
       fr: ["Matchs de Championnat", "Analyse Vidéo Tactique", "Pic de Forme Athlétique", "Préparation aux Détections"]
     },
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800&auto=format&fit=crop"
+    image: pexelsArafat
   },
   {
     id: "u20",
@@ -333,7 +347,7 @@ export const AGE_CATEGORIES_DATA: AgeCategory[] = [
       en: ["Pro Match Simulation", "Agent & Club Showcase", "High-Intensity Game Management", "Leadership & Career Mentorship"],
       fr: ["Simulation Matchs Pro", "Présentation aux Recruteurs", "Gestion des Matchs à Enjeu", "Mentorat de Carrière"]
     },
-    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop"
+    image: pexelsChris
   }
 ];
 
@@ -342,7 +356,7 @@ export const COACHES_DATA: Coach[] = [
     id: "coach-1",
     name: "Ousmane Traoré",
     role: { en: "Technical Director & Head Coach", fr: "Directeur Technique & Entraîneur Principal" },
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
+    image: pexelsChris,
     license: "CAF 'A' License & UEFA B Equivalent",
     experience: { en: "14+ Years in Youth Football", fr: "14+ Ans dans le Football des Jeunes" },
     bio: {
@@ -356,7 +370,7 @@ export const COACHES_DATA: Coach[] = [
     id: "coach-2",
     name: "Ibrahim Coulibaly",
     role: { en: "Lead Tactical & Opposition Analyst", fr: "Responsable Analyse Tactique & Vidéo" },
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
+    image: pexelsArafat,
     license: "CAF 'B' License & Video Performance Specialist",
     experience: { en: "9 Years Youth High Performance", fr: "9 Ans en Formation Haute Performance" },
     bio: {
@@ -369,7 +383,7 @@ export const COACHES_DATA: Coach[] = [
     id: "coach-3",
     name: "Moussa Keïta",
     role: { en: "Head Goalkeeping Specialist", fr: "Entraîneur Principal des Gardiens" },
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop",
+    image: imgWa1534,
     license: "CAF Goalkeeping Pro License",
     experience: { en: "11 Years Specialist Coaching", fr: "11 Ans Spécialiste Gardiens" },
     bio: {
@@ -382,7 +396,7 @@ export const COACHES_DATA: Coach[] = [
     id: "coach-4",
     name: "Dr. Aminata Diallo",
     role: { en: "Head Athletic Trainer & Physiotherapist", fr: "Préparateur Physique & Physiothérapeute" },
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop",
+    image: imgWa1526_26,
     license: "M.Sc. Sports Science & FIFA Medical Cert.",
     experience: { en: "8 Years High Level Athletics", fr: "8 Ans en Sport de Haut Niveau" },
     bio: {
@@ -401,7 +415,7 @@ export const FACILITIES_DATA: Facility[] = [
       en: "State-of-the-art synthetic field with professional LED floodlights, shock pad underlay, and professional match dimensions.",
       fr: "Terrain synthétique de dernière génération avec éclairage LED professionnel, sous-couche d'amortissement et dimensions réglementaires."
     },
-    image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
+    image: imgWa0057,
     features: {
       en: ["Full 11v11 Dimensions", "Night LED Lighting", "All-Weather Drainage System", "Spectator Seating Area"],
       fr: ["Dimensions 11v11 Officielles", "Éclairage LED Nocturne", "Drainage Tout Temps", "Tribune Spectateurs"]
@@ -415,7 +429,7 @@ export const FACILITIES_DATA: Facility[] = [
       en: "Fully equipped athletic center designed for explosive power, plyometrics, stability, and injury prevention.",
       fr: "Espace athlétique moderne conçu pour la puissance explosive, la pliométrie et le renforcement musculaire."
     },
-    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop",
+    image: pexelsPavan,
     features: {
       en: ["Olympic Free Weights", "Agility Ladder Equipment", "Cardio Endurance Track", "Core & Mobility Area"],
       fr: ["Poids Libres Olympiques", "Équipement d'Agilité", "Piste d'Endurance Cardio", "Espace Gainage & Mobilité"]
@@ -429,7 +443,7 @@ export const FACILITIES_DATA: Facility[] = [
       en: "Dedicated medical unit staffed with physiotherapists, ice bath recovery tubs, and biomechanical screening tools.",
       fr: "Unité médicale dédiée avec physiothérapeutes, bains de glace pour la récupération et outils biomécaniques."
     },
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop",
+    image: imgWa1526_26,
     features: {
       en: ["Cryotherapy Ice Tubs", "Physio Treatment Tables", "First-Aid & Emergency Gear", "Nutritional Hydration Bar"],
       fr: ["Bains de Cryothérapie", "Tables de Physiothérapie", "Équipement de Premier Secours", "Bar d'Hydratation"]
@@ -443,7 +457,7 @@ export const FACILITIES_DATA: Facility[] = [
       en: "Modern interactive classroom featuring 4K displays, tactical magnetic boards, and player review workstations.",
       fr: "Salle de classe interactive équipée d'écrans 4K, de tableaux magnétiques tactiques et de postes d'analyse."
     },
-    image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=800&auto=format&fit=crop",
+    image: imgWa1526_30,
     features: {
       en: ["4K Interactive Screen", "Tactical Magnetic Boards", "Player Clip Terminals", "Academic Study Desks"],
       fr: ["Écran Interactif 4K", "Tableaux Tactiques Magnétiques", "Postes de Visionnage", "Bureaux d'Études"]
@@ -457,7 +471,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     id: "test-1",
     name: "Amadou Sidibé",
     role: { en: "Parent of U15 Captain", fr: "Parent de Capitaine U15" },
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
+    avatar: pexelsArafat,
     quote: {
       en: "TANDEM FOOT CLUB did not only make my son a much better footballer; they transformed his discipline at school and his leadership at home. The staff is exceptionally professional.",
       fr: "TANDEM FOOT CLUB n'a pas seulement fait de mon fils un meilleur footballeur; ils ont transformé sa discipline à l'école et son leadership à la maison. Le personnel est extrêmement professionnel."
@@ -469,7 +483,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     id: "test-2",
     name: "Cheick Oumar Diarra",
     role: { en: "U17 Midfielder", fr: "Milieu de Terrain U17" },
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
+    avatar: imgWa0043,
     quote: {
       en: "Training here feels like being at a European club. The coaches demand 100% effort every single day, and the video feedback helped me understand tactical spaces faster.",
       fr: "S'entraîner ici, c'est comme être dans un club européen. Les entraîneurs exigent 100% d'effort chaque jour, et les analyses vidéo m'ont aidé à comprendre le jeu plus vite."
@@ -481,7 +495,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     id: "test-3",
     name: "Laurent Mercier",
     role: { en: "International Scout & Partner", fr: "Recruteur International & Partenaire" },
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
+    avatar: pexelsChris,
     quote: {
       en: "The technical quality and discipline shown by Tandem Foot Club players during our scout visit in Bamako were remarkable. A true model for football education in West Africa.",
       fr: "La qualité technique et la discipline des joueurs de Tandem Foot Club lors de notre visite à Bamako étaient remarquables. Un vrai modèle pour la formation en Afrique de l'Ouest."
@@ -493,7 +507,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     id: "test-4",
     name: "Fatoumata Coulibaly",
     role: { en: "Mother of U13 Goalkeeper", fr: "Mère de Gardien U13" },
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop",
+    avatar: imgWa0071,
     quote: {
       en: "The academic tracking and personal care given by coach staff is what makes Tandem unique. My son's self-confidence and grades have improved significantly.",
       fr: "Le suivi scolaire et l'accompagnement personnalisé du staff rendent Tandem unique. La confiance en soi et les résultats scolaires de mon fils ont énormément progressé."
@@ -505,7 +519,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
     id: "test-5",
     name: "Moussa Keïta",
     role: { en: "Former U20 Captain & Scholar", fr: "Ancien Capitaine U20 & Boursier" },
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&auto=format&fit=crop",
+    avatar: pexelsPavan,
     quote: {
       en: "Tandem Foot Club gave me the tactical roots and athletic mindset needed to earn my sports scholarship. Forever grateful for the coaches in N'Tabacoro.",
       fr: "Tandem Foot Club m'a transmis la rigueur tactique et l'esprit athlétique nécessaires pour obtenir ma bourse sportive. Reconnaissant à jamais envers les coachs de N'Tabacoro."
@@ -596,14 +610,14 @@ export const NEWS_DATA: NewsArticle[] = [
       en: "In a breathtaking final held in Bamako, TANDEM FOOT CLUB U17 demonstrated the power of our tactical pressing and fluid ball movement...",
       fr: "Lors d'une finale palpitante à Bamako, l'équipe U17 du TANDEM FOOT CLUB a démontré toute l'efficacité du jeu de position..."
     },
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=800&auto=format&fit=crop",
+    image: imgWa0071,
     featured: true
   },
   {
     id: "news-2",
     title: {
-      en: "New FIFA-Standard Synthetic Turf Pitch Completed at N'Tabacoro",
-      fr: "Inauguration du Nouveau Terrain Synthétique aux Normes FIFA à N'Tabacoro"
+      en: "New Turf Pitch Completed at N'Tabacoro",
+      fr: "Inauguration du Nouveau Terrain de Tandem N'Tabacoro"
     },
     category: { en: "Facility Upgrade", fr: "Infrastructures" },
     date: "June 30, 2026",
@@ -614,9 +628,9 @@ export const NEWS_DATA: NewsArticle[] = [
     },
     content: {
       en: "As part of our commitment to athletic excellence, TANDEM FOOT CLUB has officially opened its expanded training complex in Bamako...",
-      fr: "Dans le cadre de notre engagement envers l'excellence, le TANDEM FOOT CLUB a officiellement inauguré son complexe rénové..."
+      fr: "Dans le cadre de notre engagement envers l'excellence, le TANDEM FOOT CLUB a officially inauguré son complexe rénové..."
     },
-    image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop"
+    image: imgWa0057
   },
   {
     id: "news-3",
@@ -635,19 +649,23 @@ export const NEWS_DATA: NewsArticle[] = [
       en: "TANDEM FOOT CLUB continues to build direct pathways for talented players in Mali to step into professional football contracts...",
       fr: "Le TANDEM FOOT CLUB continue d'offrir des passerelles directes vers le football professionnel pour les talents maliens..."
     },
-    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop"
+    image: pexelsChris
   }
 ];
 
 export const GALLERY_IMAGES = [
-  { id: "g1", url: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1000&auto=format&fit=crop", title: { en: "Stadium Night Lights", fr: "Lumières du Stade" }, category: "Pitch" },
-  { id: "g2", url: "https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?q=80&w=1000&auto=format&fit=crop", title: { en: "Technical Ball Mastery", fr: "Maîtrise Technique" }, category: "Training" },
-  { id: "g3", url: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1000&auto=format&fit=crop", title: { en: "Team Celebration", fr: "Célébration d'Équipe" }, category: "Matches" },
-  { id: "g4", url: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=1000&auto=format&fit=crop", title: { en: "Agility Drill", fr: "Parcours d'Agilité" }, category: "Training" },
-  { id: "g5", url: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=1000&auto=format&fit=crop", title: { en: "Goalkeeper Flying Save", fr: "Parade Aérienne du Gardien" }, category: "Training" },
-  { id: "g6", url: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1000&auto=format&fit=crop", title: { en: "Athletic Gym Session", fr: "Séance en Salle de Sport" }, category: "Facilities" },
-  { id: "g7", url: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1000&auto=format&fit=crop", title: { en: "Video Strategy Room", fr: "Salle de Stratégie Vidéo" }, category: "Facilities" },
-  { id: "g8", url: "https://images.unsplash.com/photo-1517649763962-0c623266010b?q=80&w=1000&auto=format&fit=crop", title: { en: "Team Huddle Spirit", fr: "Union & Esprit d'Équipe" }, category: "Matches" }
+  { id: "g1", url: imgWa0071, title: { en: "Match Intensity & Action", fr: "Intensité & Action de Match" }, category: "Matches" },
+  { id: "g2", url: pexelsArafat, title: { en: "Technical Ball Mastery", fr: "Maîtrise Technique" }, category: "Training" },
+  { id: "g3", url: imgWa0057, title: { en: "N'Tabacoro Pitch Field", fr: "Terrain de N'Tabacoro" }, category: "Pitch" },
+  { id: "g4", url: pexelsChris, title: { en: "Youth Tactical Drills", fr: "Ateliers Tactiques Jeunes" }, category: "Training" },
+  { id: "g5", url: imgWa0043, title: { en: "Agility & Sprint Workout", fr: "Entraînement Agilité & Sprint" }, category: "Training" },
+  { id: "g6", url: pexelsPavan, title: { en: "Athletic Conditioning", fr: "Conditionnement Athlétique" }, category: "Facilities" },
+  { id: "g7", url: imgWa0073, title: { en: "Team Strategy & Focus", fr: "Concentration & Stratégie" }, category: "Matches" },
+  { id: "g8", url: imgWa1534, title: { en: "Goalkeeper Training Session", fr: "Séance Entraînement Gardien" }, category: "Training" },
+  { id: "g9", url: imgWa1630, title: { en: "Group Training Warm-up", fr: "Échauffement Collectif" }, category: "Training" },
+  { id: "g10", url: img92cf, title: { en: "Fitness & Strength Session", fr: "Séance Renforcement Physique" }, category: "Facilities" },
+  { id: "g11", url: imgWa1526_26, title: { en: "Academy Medical Unit", fr: "Unité Médicale de l'Académie" }, category: "Facilities" },
+  { id: "g12", url: imgWa1526_30, title: { en: "Video Strategy Class", fr: "Analyse Vidéo & Classe" }, category: "Facilities" }
 ];
 
 export const PLAYERS_DATA: Player[] = [
@@ -659,7 +677,7 @@ export const PLAYERS_DATA: Player[] = [
     position: "Milieu",
     positionEn: "Midfielder",
     secondaryPosition: { en: "Attacking Midfielder / Playmaker", fr: "Milieu Offensif / Meneur de Jeu" },
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+    image: pexelsArafat,
     age: 16,
     height: "1m78",
     weight: "69 kg",
@@ -703,7 +721,7 @@ export const PLAYERS_DATA: Player[] = [
     position: "Attaquant",
     positionEn: "Forward",
     secondaryPosition: { en: "Center Forward / Striker", fr: "Avant-Centre de Rupture" },
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
+    image: pexelsChris,
     age: 19,
     height: "1m86",
     weight: "77 kg",
@@ -747,7 +765,7 @@ export const PLAYERS_DATA: Player[] = [
     position: "Défenseur",
     positionEn: "Defender",
     secondaryPosition: { en: "Central Defender / Stopper", fr: "Défenseur Central / Stoppeur" },
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
+    image: imgWa0071,
     age: 18,
     height: "1m89",
     weight: "81 kg",
@@ -792,7 +810,7 @@ export const PLAYERS_DATA: Player[] = [
     position: "Gardien",
     positionEn: "Goalkeeper",
     secondaryPosition: { en: "Sweeper Keeper", fr: "Gardien Volant / Libéro" },
-    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop",
+    image: imgWa1534,
     age: 17,
     height: "1m91",
     weight: "82 kg",
@@ -837,7 +855,7 @@ export const PLAYERS_DATA: Player[] = [
     position: "Attaquant",
     positionEn: "Forward",
     secondaryPosition: { en: "Winger (Left & Right)", fr: "Ailier Dribbleur (Gauche / Droit)" },
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop",
+    image: imgWa0043,
     age: 14,
     height: "1m72",
     weight: "62 kg",
@@ -881,7 +899,7 @@ export const PLAYERS_DATA: Player[] = [
     position: "Milieu",
     positionEn: "Midfielder",
     secondaryPosition: { en: "Defensive Midfielder / Anchor", fr: "Milieu Défensif / Sentinelle" },
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop",
+    image: imgWa0073,
     age: 21,
     height: "1m83",
     weight: "76 kg",
@@ -926,7 +944,7 @@ export const PLAYERS_DATA: Player[] = [
     position: "Défenseur",
     positionEn: "Defender",
     secondaryPosition: { en: "Right Fullback / Wingback", fr: "Arrière Droit / Piston" },
-    image: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=800&auto=format&fit=crop",
+    image: pexelsPavan,
     age: 16,
     height: "1m76",
     weight: "68 kg",
@@ -970,7 +988,7 @@ export const PLAYERS_DATA: Player[] = [
     position: "Attaquant",
     positionEn: "Forward",
     secondaryPosition: { en: "Left Winger / Inside Forward", fr: "Ailier Gauche / Attaquant Intérieur" },
-    image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=800&auto=format&fit=crop",
+    image: imgWa1630,
     age: 18,
     height: "1m80",
     weight: "73 kg",

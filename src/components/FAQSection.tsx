@@ -21,10 +21,6 @@ export const FAQSection: React.FC<FAQProps> = ({ lang }) => {
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1E4E92]/10 text-[#1E4E92] text-xs font-bold uppercase tracking-wider mb-4 border border-[#1E4E92]/20">
-            <HelpCircle className="w-4 h-4 text-[#1E4E92]" />
-            <span>{lang === 'en' ? 'Parent & Player Guidance' : 'Foire Aux Questions'}</span>
-          </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight">
             {lang === 'en' ? 'Frequently Asked Questions' : 'Questions Fréquemment Posées'}
           </h2>

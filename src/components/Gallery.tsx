@@ -24,10 +24,6 @@ export const Gallery: React.FC<GalleryProps> = ({ lang }) => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCEBFF] text-[#1E4E92] text-xs font-bold uppercase tracking-widest mb-4">
-            <Camera className="w-4 h-4 text-[#1E4E92]" />
-            <span>{lang === 'en' ? 'Academy In Action' : 'L\'Académie En Images'}</span>
-          </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight">
             {lang === 'en' ? 'Photo Gallery & Highlights' : 'Galerie Photos & Temps Forts'}
           </h2>

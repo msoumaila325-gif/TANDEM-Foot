@@ -39,12 +39,8 @@ export const AgeCategories: React.FC<AgeCategoriesProps> = ({
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1E4E92] text-white text-xs font-bold uppercase tracking-widest mb-4">
-            <Users className="w-4 h-4 text-[#DCEBFF]" />
-            <span>{lang === 'en' ? 'Youth Squad Pathways' : 'Catégories d\'Âge'}</span>
-          </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight">
-            {lang === 'en' ? 'Age Group Division (U11 to U20)' : 'De U11 à U20 : Le Parcours Vers L\'Élite'}
+            {lang === 'en' ? 'Age Group Division (U11 to U20)' : 'Répartition par Catégories d\'Âge (U11 à U20)'}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-gray-600">
             {lang === 'en'

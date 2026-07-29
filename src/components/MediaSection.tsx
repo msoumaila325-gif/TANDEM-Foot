@@ -59,11 +59,6 @@ export const MediaSection: React.FC<MediaSectionProps> = ({
       {/* Top Header & Quick Jump Controls */}
       <section className="pt-16 pb-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-slate-200/80">
         <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-[#153E75] text-xs font-bold uppercase tracking-wider mb-4 shadow-xs">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#22C55E] animate-pulse" />
-            <span>{lang === 'en' ? 'TFC Media & Press Hub' : 'Espace Média & Presse TFC'}</span>
-          </div>
-          
           <h2 className="text-2xl sm:text-4xl font-extrabold text-[#153E75] font-heading tracking-tight leading-tight">
             {showGallery
               ? (lang === 'en' ? 'Media Gallery & Club News' : 'Galerie Média & Actualités du Club')
@@ -118,8 +113,8 @@ export const MediaSection: React.FC<MediaSectionProps> = ({
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 font-normal">
                   {lang === 'en' 
-                    ? 'Immerse yourself in our daily training routines, match celebrations, and high-performance complex in N\'Tabacoro.'
-                    : 'Plongez au cœur des séances d\'entraînement, des célébrations de matchs et de nos infrastructures à N\'Tabacoro.'}
+                    ? 'Photos and videos from training sessions, official matches, and complex facilities in N\'Tabacoro.'
+                    : 'Photos et vidéos des séances d\'entraînement, des matchs et des installations du complexe à N\'Tabacoro.'}
                 </p>
               </div>
 

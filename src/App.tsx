@@ -20,7 +20,6 @@ import { ContactSection } from './components/ContactSection';
 import { EnrollmentModal } from './components/EnrollmentModal';
 import { ScoutingHub } from './components/ScoutingHub';
 import { PartnershipsSection } from './components/PartnershipsSection';
-import { MatchCenter } from './components/MatchCenter';
 import { AcademyBentoSections } from './components/AcademyBentoSections';
 import { Footer } from './components/Footer';
 
@@ -73,7 +72,6 @@ export default function App() {
               lang={lang}
               onOpenEnrollment={() => setEnrollmentOpen(true)}
             />
-            <MatchCenter lang={lang} />
             <CoachingStaff lang={lang} />
             <MediaSection lang={lang} showGallery={false} />
             <Testimonials lang={lang} />
@@ -113,7 +111,6 @@ export default function App() {
               lang={lang}
               onOpenEnrollment={() => setEnrollmentOpen(true)}
             />
-            <MatchCenter lang={lang} />
             <PartnershipsSection lang={lang} />
           </>
         )}

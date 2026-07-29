@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Language } from '../types';
 import { ACADEMY_INFO } from '../data/academyData';
 import { Target, Award, Heart, Shield, Sparkles, CheckCircle2 } from 'lucide-react';
+import { imgWa0073 } from '../image';
 
 interface AboutProps {
   lang: Language;
@@ -40,12 +41,6 @@ export const AboutSection: React.FC<AboutProps> = ({ lang }) => {
       <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#153E75] via-[#1E4E92] to-[#3B82F6]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Eyebrow Badge (Green Dot Style) */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F8FAFC] border border-slate-200 text-slate-800 text-xs font-bold shadow-xs mb-6">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#22C55E] animate-pulse" />
-          <span>{lang === 'en' ? 'Our Foundation' : 'Notre Fondation & Histoire'}</span>
-        </div>
-
         {/* Split Section Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12">
           <div className="lg:col-span-7">
@@ -235,10 +230,9 @@ export const AboutSection: React.FC<AboutProps> = ({ lang }) => {
               {/* Main Image Frame */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <img
-                  src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?q=80&w=1000&auto=format&fit=crop"
+                  src={imgWa0073}
                   alt="Tandem Foot Club Player in Action"
                   className="w-full h-[480px] object-cover hover:scale-105 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#153E75]/80 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">

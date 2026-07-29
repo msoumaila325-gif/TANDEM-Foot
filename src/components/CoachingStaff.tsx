@@ -16,13 +16,13 @@ export const CoachingStaff: React.FC<CoachingStaffProps> = ({ lang }) => {
         {/* Corporate Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <h2 className="text-2xl sm:text-4xl font-extrabold text-[#153E75] font-heading tracking-tight">
-            {lang === 'en' ? 'Our Elite Leadership & Technical Staff' : 'Notre Staff Technique & Formateurs d\'Élite'}
+            {lang === 'en' ? 'Technical Leadership & Coaching Staff' : 'Encadrement & Staff Technique'}
           </h2>
           
           <p className="mt-3 text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
             {lang === 'en'
-              ? 'A dedicated team of CAF & UEFA certified professionals combining elite playing backgrounds with modern sports science in Bamako.'
-              : 'Une équipe d\'experts diplômés CAF & UEFA alliants l\'expérience du haut niveau, l\'analyse tactique et la science du sport au service de la jeunesse.'}
+              ? 'A dedicated team of CAF certified professionals combining tactical analysis, athletic preparation, and youth football development in Bamako.'
+              : 'Une équipe d\'éducateurs diplômés CAF spécialisés en préparation physique, analyse tactique et accompagnement des jeunes.'}
           </p>
         </div>
 

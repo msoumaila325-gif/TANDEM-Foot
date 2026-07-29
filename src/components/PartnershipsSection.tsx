@@ -49,25 +49,21 @@ export const PartnershipsSection: React.FC<PartnershipsProps> = ({ lang }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#60A5FA] text-xs font-black uppercase tracking-wider mb-4">
-            <Award className="w-3.5 h-3.5" />
-            <span>{lang === 'en' ? 'Institutional & Commercial Partnerships' : 'Espace Sponsors & Partenaires'}</span>
-          </div>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white font-heading">
             {lang === 'en' ? (
               <>
-                ASSOCIATE YOUR BRAND WITH <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] via-white to-[#3B82F6]">FOOTBALL EXCELLENCE</span>
+                BECOME A PARTNER OF <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] via-white to-[#3B82F6]">TANDEM FOOT CLUB</span>
               </>
             ) : (
               <>
-                ASSOCIEZ VOTRE MARQUE À <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] via-white to-[#3B82F6]">L'ÉLITE DU FOOTBALL MALIEN</span>
+                DEVENIR PARTENAIRE DU <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60A5FA] via-white to-[#3B82F6]">TANDEM FOOT CLUB</span>
               </>
             )}
           </h2>
           <p className="mt-4 text-sm sm:text-base text-[#DCEBFF]/85 leading-relaxed">
             {lang === 'en'
-              ? 'Join our ecosystem of visionary sponsors, corporate partners, and international football institutions building the future of West African talent.'
-              : 'Rejoignez un réseau de partenaires visionnaires, d\'entreprises citoyennes et de clubs professionnels investissant dans la jeunesse et le sport d\'élite.'}
+              ? 'Support youth football development in Bamako and associate your company with a structured athletic and educational initiative.'
+              : 'Soutenez la formation des jeunes footballeurs à Bamako et associez votre entreprise à un projet sportif et éducatif structuré.'}
           </p>
         </div>
 

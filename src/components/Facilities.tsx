@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Facility, Language } from '../types';
 import { FACILITIES_DATA } from '../data/academyData';
 import { ArrowUpRight, CheckCircle2, MapPin, X } from 'lucide-react';
+import { imgWa0071, imgWa0057, imgWa1526_30 } from '../image';
 
 interface FacilitiesProps {
   lang: Language;
@@ -21,7 +22,7 @@ export const Facilities: React.FC<FacilitiesProps> = ({ lang, onOpenEnrollment }
         fr: 'Améliorez votre jeu grâce à des séances tactiques et des entraînements personnalisés dispensés par nos coachs certifiés CAF.',
         en: 'Improve your game with personalized tactical drills and physical training from certified youth pros.'
       },
-      image: 'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&q=80&w=800',
+      image: imgWa0071,
       badge: { fr: 'Staff CAF & FIFA', en: 'CAF & FIFA Staff' },
       features: [
         { fr: 'Entraînements tactiques personnalisés', en: 'Custom tactical sessions' },
@@ -36,7 +37,7 @@ export const Facilities: React.FC<FacilitiesProps> = ({ lang, onOpenEnrollment }
         fr: 'Jouez et entraînez-vous sur des surfaces synthétiques homologuées de dernière génération au complexe de N\'Tabacoro.',
         en: 'Train and play on state-of-the-art FIFA-standard synthetic turf at our N\'Tabacoro complex.'
       },
-      image: 'https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&q=80&w=800',
+      image: imgWa0057,
       badge: { fr: 'Complexe N\'Tabacoro', en: 'N\'Tabacoro Complex' },
       features: [
         { fr: 'Gazon synthétique haut de gamme', en: 'Top-tier synthetic turf' },
@@ -51,7 +52,7 @@ export const Facilities: React.FC<FacilitiesProps> = ({ lang, onOpenEnrollment }
         fr: 'Bénéficiez d\'une prise en charge athlétique complète avec suivi physiothérapeutique, bilans de forme et soins d\'urgence.',
         en: 'Benefit from comprehensive athletic care with dedicated physio support, biometric fitness tracking, and safety.'
       },
-      image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=800',
+      image: imgWa1526_30,
       badge: { fr: 'Pôle Médical TFC', en: 'TFC Medical Hub' },
       features: [
         { fr: 'Physiothérapeute & kiné dédié', en: 'Dedicated physio & kinesitherapy' },
@@ -65,12 +66,6 @@ export const Facilities: React.FC<FacilitiesProps> = ({ lang, onOpenEnrollment }
     <section id="facilities" className="py-20 sm:py-28 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Eyebrow Badge (Green Dot Style) */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F8FAFC] border border-slate-200 text-slate-800 text-xs font-bold shadow-xs mb-6">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#22C55E] animate-pulse" />
-          <span>{lang === 'fr' ? 'Infrastructures & Services' : 'Facilities & Equipment'}</span>
-        </div>
-
         {/* Split Section Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12">
           <div className="lg:col-span-7">

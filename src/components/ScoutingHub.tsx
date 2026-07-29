@@ -77,10 +77,6 @@ export const ScoutingHub: React.FC<ScoutingHubProps> = ({ lang, onOpenEnrollment
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1E4E92]/10 border border-[#1E4E92]/20 text-[#1E4E92] text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#1E4E92]" />
-            <span>{lang === 'en' ? 'International Scouting Hub' : 'Hub de Recrutement & Scouting'}</span>
-          </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#153E75] font-heading">
             {lang === 'en' ? (
               <>

@@ -37,10 +37,6 @@ export const LatestNews: React.FC<LatestNewsProps> = ({ lang }) => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1E4E92]/10 text-[#1E4E92] text-xs font-bold uppercase tracking-wider mb-4 border border-[#1E4E92]/20">
-            <Newspaper className="w-4 h-4 text-[#1E4E92]" />
-            <span>{lang === 'en' ? 'Official Press & News' : 'Actualités & Flash Info'}</span>
-          </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#153E75] font-heading tracking-tight">
             {lang === 'en' ? 'Latest Academy Milestones & Announcements' : 'Dernières Nouvelles Et Événements'}
           </h2>
